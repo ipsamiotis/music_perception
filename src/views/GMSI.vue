@@ -1,16 +1,36 @@
 <template>
     <div>
         <h3>Please select the most appropriate category for following questions:</h3>
-        <h4>1. I spend a lot of my free time doing music-related activities.</h4>
-        <SelectButton v-model="value2" :options="agreeOptions" optionLabel="name" />
-        <h4>2. "I enjoy writing about music, for example on blogs and forums."</h4>
-        <SelectButton v-model="value2" :options="agreeOptions" optionLabel="name" />
+        <Question1 :getAnswer="getAnswer"/>
+        <Question2 :getAnswer="getAnswer"/>
+        <Question3 :getAnswer="getAnswer"/>
+        <Question4 :getAnswer="getAnswer"/>
+        <!-- <h4>1. I spend a lot of my free time doing music-related activities.</h4>
+        <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
+            <RadioButton :id="option.key" name="question1" :value="option" v-model="state.value"/>
+            <label :for="option.key">{{option.name}}</label>
+        </div> -->
+        <!-- <h4>2. "I enjoy writing about music, for example on blogs and forums."</h4>
+        <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
+            <RadioButton :id="option.key" name="question2" :value="option" v-model="state.value"/>
+            <label :for="option.key">{{option.name}}</label>
+        </div>
         <h4>3. I often read or search the internet for things related to music.</h4>
-        <SelectButton v-model="value2" :options="agreeOptions" optionLabel="name" />
+        <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
+            <RadioButton :id="option.key" name="question3" :value="option" v-model="state.value3"/>
+            <label :for="option.key">{{option.name}}</label>
+        </div>
         <h4>4. I don't spend much of my disposable income on music.</h4>
-        <SelectButton v-model="value2" :options="agreeOptions" optionLabel="name" />
-        <h4>5. IMusic is kind of an addiction for me - I couldn't live without it.</h4>
-        <SelectButton v-model="value2" :options="agreeOptions" optionLabel="name" />
+        <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
+            <RadioButton :id="option.key" name="option4" :value="option" v-model="state.value4"/>
+            <label :for="option.key">{{option.name}}</label>
+        </div>
+        <h4>5. Music is kind of an addiction for me - I couldn't live without it.</h4>
+        <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
+            <RadioButton :id="option.key" name="option5" :value="option" v-model="state.value5"/>
+            <label :for="option.key">{{option.name}}</label>
+        </div> -->
+        <!-- <SelectButton v-model="value2" :options="agreeOptions" optionLabel="name" />
         <h4>6. I listen attentively to music for _____ per day.</h4>
         <SelectButton v-model="value1" :options="minsOptions" optionLabel="name" />
         <h4>7. I keep track of new music that I come across (e.g. new artists or recordings).</h4>
@@ -74,54 +94,89 @@
         <h4>36. What age did you start to play an instrument?</h4>
         <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
         <h4>37. "Do you have absolute pitch? Absolute or perfect pitch is the ability to recognise and name an isolated musical tone without a reference tone, e.g. being able to say 'F#' if someone plays that note on the piano."</h4>
-        <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
+        <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" /> -->
     </div>
-    <router-link to="nasa" replace>Next</router-link>
+    <Button label="Next" @click="$router.push('nasa')" :disabled="state.isDisabled"/>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 
-import SelectButton from 'primevue/selectbutton';
+import Button from 'primevue/button';
+
+import Question1 from "@/components/Question1"
+import Question2 from "@/components/Question2"
+import Question3 from "@/components/Question3"
+import Question4 from "@/components/Question4"
 
 export default {
     components: {
-        SelectButton
+        Button,
+        Question1,
+        Question2,
+        Question3,
+        Question4,
     },
 
     setup(){
-        const value1 = ref();
-        const value2 = ref();
-        const value3 = ref();
-        const minsOptions = ref([
-            {name: '0-15 mins', value: 1},
-            {name: '15-30 mins', value: 2},
-            {name: '30-60 mins', value: 3},
-            {name: '60-90 mins', value: 4},
-            {name: '2 hrs', value: 5},
-            {name: '2-3 hrs', value: 6},
-            {name: '4 hrs or more', value: 7},
-        ]);
-        const agreeOptions = ref([
-            {name: 'Completely Disagree', value: 1},
-            {name: 'Strongly Disagree', value: 2},
-            {name: 'Disagree', value: 3},
-            {name: 'Neither Agree or Disagree', value: 4},
-            {name: 'Agree', value: 5},
-            {name: 'Strongly Agree', value: 6},
-            {name: 'Completely Agree', value: 7},
-        ]);
-        const numOptions = ref([
-            {name: '0', value: 1},
-            {name: '1', value: 2},
-            {name: '2', value: 3},
-            {name: '3', value: 4},
-            {name: '4-5', value: 5},
-            {name: '6-9', value: 6},
-            {name: '10 or more', value: 7},
-        ]);
+        const state = reactive({
+            // agreeOptions: [
+            //     {name: 'Completely Disagree', key: 1},
+            //     {name: 'Strongly Disagree', key: 2},
+            //     {name: 'Disagree', key: 3},
+            //     {name: 'Neither Agree or Disagree', key: 4},
+            //     {name: 'Agree', key: 5},
+            //     {name: 'Strongly Agree', key: 6},
+            //     {name: 'Completely Agree', key: 7},
+            // ],
+            // minsOptions: [
+            //     {name: '0-15 mins', key: 1},
+            //     {name: '15-30 mins', key: 2},
+            //     {name: '30-60 mins', key: 3},
+            //     {name: '60-90 mins', key: 4},
+            //     {name: '2 hrs', key: 5},
+            //     {name: '2-3 hrs', key: 6},
+            //     {name: '4 hrs or more', key: 7},
+            // ],
+            // numOptions: [
+            //     {name: '0', key: 1},
+            //     {name: '1', key: 2},
+            //     {name: '2', key: 3},
+            //     {name: '3', key: 4},
+            //     {name: '4-5', key: 5},
+            //     {name: '6-9', key: 6},
+            //     {name: '10 or more', key: 7},
+            // ]
+            isDisabled : true,
+            gmsiReplies: []
+        })
 
-        return { value1, value2, value3, minsOptions, agreeOptions, numOptions}
+        function getAnswer(answer, prevAnswer){
+            if (state.gmsiReplies.indexOf(prevAnswer) != -1) {
+                replaceReply(answer, state.gmsiReplies.indexOf(prevAnswer))
+            } else {
+                addReply(answer)
+            }
+            console.log(state.gmsiReplies)
+        }
+
+        function addReply(reply) {
+            state.gmsiReplies.push(reply)
+            enableNext()
+        }
+
+        function replaceReply(reply, index) {
+            state.gmsiReplies.splice(index, 1, reply)
+            enableNext()
+        }
+
+        function enableNext() {
+            if (state.gmsiReplies.length == 4 ){
+                state.isDisabled = false
+            }
+        }
+
+        return { state, getAnswer, addReply, replaceReply, enableNext}
     }
 }
 

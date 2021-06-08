@@ -88,15 +88,8 @@
             <label for="age6">Older than 65 years</label>
         </div>
     </div>
-    <!-- <div v-if="state.isDisabled === 'true'"> -->
-        <Button label="Next" @click="$router.push('gmsi')" :disabled="state.isDisabled"/>
-            <!-- <router-link to="gmsi" replace>Next</router-link> -->
-    <!-- </div> -->
-    <!-- <div v-else>
-        <Button class="p-button-success">
-            <router-link to="gmsi" replace>Next</router-link>
-        </Button>
-    </div> -->
+    <Button label="Next" @click="$router.push('gmsi')" :disabled="state.isDisabled"/>
+
 </template>
 
 <script>
