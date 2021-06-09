@@ -88,7 +88,7 @@
             <label for="age6">Older than 65 years</label>
         </div>
     </div>
-    <Button label="Next" @click="$router.push('gmsi')" :disabled="state.isDisabled"/>
+    <Button label="Next" @click="addDemographics();$router.push('gmsi')" :disabled="state.isDisabled"/>
 
 </template>
 
@@ -97,6 +97,8 @@ import { reactive, watch } from 'vue';
 
 import RadioButton from 'primevue/radiobutton';
 import Button from 'primevue/button';
+
+import axios from 'axios'
 
 export default {
     components: {
@@ -110,6 +112,7 @@ export default {
             age : '',
             education : '',
             isDisabled : true,
+            lastId: '',
             demoReplies: []
         })
 
@@ -118,7 +121,6 @@ export default {
             ([occupation, age, education], [preoccupation, preage, preeducation]) => {
 
                 if (occupation != preoccupation) {
-                    console.log(state.demoReplies.indexOf(preoccupation))
                     if (state.demoReplies.indexOf(preoccupation) != -1) {
                         replaceReply(occupation, state.demoReplies.indexOf(preoccupation))
                     } else {
@@ -126,7 +128,6 @@ export default {
                     }
                 }
                 if (education != preeducation) {
-                    console.log(state.demoReplies.indexOf(preeducation))
                     if (state.demoReplies.indexOf(preeducation) != -1) {
                         replaceReply(education, state.demoReplies.indexOf(preeducation))
                     } else {
@@ -134,7 +135,6 @@ export default {
                     }
                 }
                 if (age != preage) {
-                    console.log(state.demoReplies.indexOf(preage))
                     if (state.demoReplies.indexOf(preage) != -1) {
                         replaceReply(age, state.demoReplies.indexOf(preage))
                     } else {
@@ -158,10 +158,15 @@ export default {
             if (state.demoReplies.length == 3 ){
                 state.isDisabled = false
             }
-            console.log(state.demoReplies)
         }
 
-        return {state, enableNext, addReply}
+        async function addDemographics() {
+            await axios.post(`http://localhost:3000/crowd-results/${state.lastId}`, {
+                demographics: state.demoReplies
+            });
+        }
+
+        return {state, enableNext, addReply, addDemographics}
     }
 }
 

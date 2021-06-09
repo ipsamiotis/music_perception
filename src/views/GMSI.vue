@@ -106,7 +106,7 @@
             <Question34 :getAnswer="getAnswer"/>
         </div>
         <div v-else>
-            <h4 style="text-align:center">Thank you for your answers!</h4>
+            <h4 style="text-align:left;margin-left: 150px;">Thank you for your answers!</h4>
         </div>
         </transition>
 
@@ -122,13 +122,15 @@
         <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
         -->
     </div>
-    <Button label="Next" @click="$router.push('nasa')" :disabled="state.isDisabled"/>
+    <Button label="Next" @click="addDemographics();$router.push('nasa')" :disabled="state.isDisabled"/>
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { reactive, onMounted } from 'vue';
 
 import Button from 'primevue/button';
+
+import axios from 'axios'
 
 import Question1 from "@/components/Question1"
 import Question2 from "@/components/Question2"
@@ -210,6 +212,10 @@ export default {
             gmsiReplies: []
         })
 
+        onMounted(() => {
+            getResultsSoFar()
+        })
+
         async function getAnswer(answer, prevAnswer){
             if (state.gmsiReplies.indexOf(prevAnswer) != -1) {
                 await sleep(200)
@@ -218,7 +224,6 @@ export default {
                 await sleep(200)
                 addReply(answer)
             }
-            console.log(state.gmsiReplies)
         }
 
         function addReply(reply) {
@@ -241,7 +246,20 @@ export default {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        return { state, getAnswer, addReply, replaceReply, enableNext, sleep}
+        async function getResultsSoFar() {
+            const { data } = await axios.get("http://localhost:3000/crowd-results/");
+            let [last] = data.slice(-1);
+            state.lastId = last.id
+        }
+
+        async function addDemographics() {
+            const headers = {"Content-Type": "application/json"}
+            await axios.patch(`http://localhost:3000/crowd-results/${state.lastId}`, {
+                gmsi: state.gmsiReplies
+            }, {headers});
+        }
+
+        return { state, getAnswer, addReply, replaceReply, enableNext, sleep, getResultsSoFar, addDemographics}
     }
 }
 

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router' //, createWebHashHistory
+import { createRouter, createWebHistory } from 'vue-router' //
 import Home from '../views/Home.vue'
 
 const routes = [
@@ -8,7 +8,7 @@ const routes = [
         component: Home,
         children: [
             {
-                path: 'demographics',
+                path: '',
                 name: 'Demographics',
                 component: () => import('@/views/Demographics.vue'),
             },

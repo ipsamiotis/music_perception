@@ -17,11 +17,13 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { onMounted, reactive } from 'vue';
 import router from '@/router/index.js'
 
 import Slider from 'primevue/slider';
 import Button from 'primevue/button';
+
+import axios from 'axios'
 
 export default {
     components: {
@@ -41,18 +43,34 @@ export default {
             isDisabled: true
         })
 
+        onMounted(() => {
+            getResultsSoFar()
+        })
+
         function enableNext() {
-            console.log(state.nasaReplies)
             if (state.value1 != 0 && state.value2 != 0 && state.value3 != 0 && state.value4 != 0 && state.value5 != 0 && state.value6 != 0){
                 state.nasaReplies = [state.value1, state.value2, state.value3, state.value4, state.value5, state.value6]
-                console.log(state.nasaReplies)
                 router.push('/final')
+                addDemographics()
             } else {
                 alert("Please reply to all questions first")
             }
         }
 
-        return {state, enableNext}
+        async function getResultsSoFar() {
+            const { data } = await axios.get("http://localhost:3000/crowd-results/");
+            let [last] = data.slice(-1);
+            state.lastId = last.id
+        }
+
+        async function addDemographics() {
+            const headers = {"Content-Type": "application/json"}
+            await axios.patch(`http://localhost:3000/crowd-results/${state.lastId}`, {
+                nasa: state.nasaReplies
+            }, {headers})
+        }
+
+        return {state, enableNext, getResultsSoFar, addDemographics}
     }
 
 }
