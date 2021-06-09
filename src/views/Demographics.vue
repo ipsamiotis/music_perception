@@ -88,12 +88,12 @@
             <label for="age6">Older than 65 years</label>
         </div>
     </div>
-    <Button label="Next" @click="addDemographics();$router.push('gmsi')" :disabled="state.isDisabled"/>
+    <Button label="Next" @click="stopTimer();addDemographics();$router.push('gmsi')" :disabled="state.isDisabled"/>
 
 </template>
 
 <script>
-import { reactive, watch } from 'vue';
+import { reactive, watch, onMounted } from 'vue';
 
 import RadioButton from 'primevue/radiobutton';
 import Button from 'primevue/button';
@@ -113,7 +113,15 @@ export default {
             education : '',
             isDisabled : true,
             lastId: '',
-            demoReplies: []
+            demoReplies: [],
+            timer: null,
+            reactionTime: 0 // in ms
+        })
+
+        onMounted(() => {
+            setTimeout(() => {
+                startTimer()
+            })
         })
 
         watch(
@@ -160,13 +168,24 @@ export default {
             }
         }
 
+        function startTimer() {
+            state.timer = setInterval(()=>{
+                state.reactionTime += 10
+            }, 10)
+        }
+
+        function stopTimer() {
+            clearInterval(state.timer)
+            state.demoReplies.push({"time_spent": state.reactionTime})
+        }
+
         async function addDemographics() {
             await axios.post(`http://localhost:3000/crowd-results/${state.lastId}`, {
                 demographics: state.demoReplies
             });
         }
 
-        return {state, enableNext, addReply, addDemographics}
+        return {state, enableNext, addReply, addDemographics, startTimer, stopTimer}
     }
 }
 

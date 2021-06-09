@@ -40,18 +40,23 @@ export default {
             value5: 0,
             value6: 0,
             nasaReplies: [],
-            isDisabled: true
+            isDisabled: true,
+            timer: null,
+            reactionTime: 0 // in ms
         })
 
         onMounted(() => {
-            getResultsSoFar()
+            setTimeout(() => {
+                startTimer()
+            })
         })
 
         function enableNext() {
             if (state.value1 != 0 && state.value2 != 0 && state.value3 != 0 && state.value4 != 0 && state.value5 != 0 && state.value6 != 0){
                 state.nasaReplies = [state.value1, state.value2, state.value3, state.value4, state.value5, state.value6]
-                router.push('/final')
+                stopTimer()
                 addDemographics()
+                router.push('/final')
             } else {
                 alert("Please reply to all questions first")
             }
@@ -63,6 +68,18 @@ export default {
             state.lastId = last.id
         }
 
+        function startTimer() {
+            state.timer = setInterval(()=>{
+                state.reactionTime += 10
+            }, 10)
+            getResultsSoFar()
+        }
+
+        function stopTimer() {
+            clearInterval(state.timer)
+            state.nasaReplies.push({"time_spent": state.reactionTime})
+        }
+
         async function addDemographics() {
             const headers = {"Content-Type": "application/json"}
             await axios.patch(`http://localhost:3000/crowd-results/${state.lastId}`, {
@@ -70,7 +87,7 @@ export default {
             }, {headers})
         }
 
-        return {state, enableNext, getResultsSoFar, addDemographics}
+        return {state, enableNext, getResultsSoFar, addDemographics, startTimer, stopTimer}
     }
 
 }

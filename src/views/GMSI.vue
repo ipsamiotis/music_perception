@@ -122,7 +122,7 @@
         <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
         -->
     </div>
-    <Button label="Next" @click="addDemographics();$router.push('nasa')" :disabled="state.isDisabled"/>
+    <Button label="Next" @click="stopTimer();addDemographics();$router.push('nasa')" :disabled="state.isDisabled"/>
 </template>
 
 <script>
@@ -209,11 +209,15 @@ export default {
     setup(){
         const state = reactive({
             isDisabled : true,
-            gmsiReplies: []
+            gmsiReplies: [],
+            timer: null,
+            reactionTime: 0 // in ms
         })
 
         onMounted(() => {
-            getResultsSoFar()
+            setTimeout(() => {
+                startTimer()
+            })
         })
 
         async function getAnswer(answer, prevAnswer){
@@ -252,6 +256,18 @@ export default {
             state.lastId = last.id
         }
 
+        function startTimer() {
+            state.timer = setInterval(()=>{
+                state.reactionTime += 10
+            }, 10)
+            getResultsSoFar()
+        }
+
+        function stopTimer() {
+            clearInterval(state.timer)
+            state.gmsiReplies.push({"time_spent": state.reactionTime})
+        }
+
         async function addDemographics() {
             const headers = {"Content-Type": "application/json"}
             await axios.patch(`http://localhost:3000/crowd-results/${state.lastId}`, {
@@ -259,7 +275,7 @@ export default {
             }, {headers});
         }
 
-        return { state, getAnswer, addReply, replaceReply, enableNext, sleep, getResultsSoFar, addDemographics}
+        return { state, getAnswer, addReply, replaceReply, enableNext, sleep, getResultsSoFar, addDemographics, startTimer, stopTimer}
     }
 }
 
