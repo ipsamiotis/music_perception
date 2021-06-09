@@ -28,6 +28,11 @@ const routes = [
                 component: () => import('@/views/NASA.vue')
             }
         ]
+    },
+    {
+        path: '/final',
+        name: 'Final',
+        component: () => import('@/views/Final.vue')
     }
 ]
 

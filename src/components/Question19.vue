@@ -52,6 +52,6 @@
 <style lang="scss" scoped>
     .p-field-radiobutton, h4{
         text-align: left;
-        margin-left: 150px;
+        margin-left: 300px;
     }
 </style>

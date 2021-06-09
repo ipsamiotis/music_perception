@@ -212,10 +212,10 @@ export default {
 
         async function getAnswer(answer, prevAnswer){
             if (state.gmsiReplies.indexOf(prevAnswer) != -1) {
-                await sleep(300)
+                await sleep(200)
                 replaceReply(answer, state.gmsiReplies.indexOf(prevAnswer))
             } else {
-                await sleep(300)
+                await sleep(200)
                 addReply(answer)
             }
             console.log(state.gmsiReplies)
