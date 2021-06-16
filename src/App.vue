@@ -1,5 +1,4 @@
 <template>
-    <!-- <router-link to="/demographics" replace>Demo</router-link> | -->
   <router-view/>
 </template>
 

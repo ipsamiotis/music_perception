@@ -1,7 +1,6 @@
 <template>
     <div>
         <h3>Please select the most appropriate category for following questions:</h3>
-        <!-- <component :is="state.currentComponent" v-bind="state.currentProperties"></component> -->
         <transition name="slide-fade" mode="out-in">
         <div v-if="state.gmsiReplies.length === 0">
             <Question1 :getAnswer="getAnswer"/>
@@ -122,7 +121,7 @@
         <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
         -->
     </div>
-    <Button label="Next" @click="stopTimer();addDemographics();$router.push('nasa')" :disabled="state.isDisabled"/>
+    <Button label="Next" @click="stopTimer();addDemographics();$router.push('proms')" :disabled="state.isDisabled"/>
 </template>
 
 <script>
@@ -132,40 +131,40 @@ import Button from 'primevue/button';
 
 import axios from 'axios'
 
-import Question1 from "@/components/Question1"
-import Question2 from "@/components/Question2"
-import Question3 from "@/components/Question3"
-import Question4 from "@/components/Question4"
-import Question5 from "@/components/Question5"
-import Question6 from "@/components/Question6"
-import Question7 from "@/components/Question7"
-import Question8 from "@/components/Question8"
-import Question9 from "@/components/Question9"
-import Question10 from "@/components/Question10"
-import Question11 from "@/components/Question11"
-import Question12 from "@/components/Question12"
-import Question13 from "@/components/Question13"
-import Question14 from "@/components/Question14"
-import Question15 from "@/components/Question15"
-import Question16 from "@/components/Question16"
-import Question17 from "@/components/Question17"
-import Question18 from "@/components/Question18"
-import Question19 from "@/components/Question19"
-import Question20 from "@/components/Question20"
-import Question21 from "@/components/Question21"
-import Question22 from "@/components/Question22"
-import Question23 from "@/components/Question23"
-import Question24 from "@/components/Question24"
-import Question25 from "@/components/Question25"
-import Question26 from "@/components/Question26"
-import Question27 from "@/components/Question27"
-import Question28 from "@/components/Question28"
-import Question29 from "@/components/Question29"
-import Question30 from "@/components/Question30"
-import Question31 from "@/components/Question31"
-import Question32 from "@/components/Question32"
-import Question33 from "@/components/Question33"
-import Question34 from "@/components/Question34"
+import Question1 from "@/components/gmsi/Question1"
+import Question2 from "@/components/gmsi/Question2"
+import Question3 from "@/components/gmsi/Question3"
+import Question4 from "@/components/gmsi/Question4"
+import Question5 from "@/components/gmsi/Question5"
+import Question6 from "@/components/gmsi/Question6"
+import Question7 from "@/components/gmsi/Question7"
+import Question8 from "@/components/gmsi/Question8"
+import Question9 from "@/components/gmsi/Question9"
+import Question10 from "@/components/gmsi/Question10"
+import Question11 from "@/components/gmsi/Question11"
+import Question12 from "@/components/gmsi/Question12"
+import Question13 from "@/components/gmsi/Question13"
+import Question14 from "@/components/gmsi/Question14"
+import Question15 from "@/components/gmsi/Question15"
+import Question16 from "@/components/gmsi/Question16"
+import Question17 from "@/components/gmsi/Question17"
+import Question18 from "@/components/gmsi/Question18"
+import Question19 from "@/components/gmsi/Question19"
+import Question20 from "@/components/gmsi/Question20"
+import Question21 from "@/components/gmsi/Question21"
+import Question22 from "@/components/gmsi/Question22"
+import Question23 from "@/components/gmsi/Question23"
+import Question24 from "@/components/gmsi/Question24"
+import Question25 from "@/components/gmsi/Question25"
+import Question26 from "@/components/gmsi/Question26"
+import Question27 from "@/components/gmsi/Question27"
+import Question28 from "@/components/gmsi/Question28"
+import Question29 from "@/components/gmsi/Question29"
+import Question30 from "@/components/gmsi/Question30"
+import Question31 from "@/components/gmsi/Question31"
+import Question32 from "@/components/gmsi/Question32"
+import Question33 from "@/components/gmsi/Question33"
+import Question34 from "@/components/gmsi/Question34"
 
 export default {
     components: {
@@ -289,7 +288,7 @@ export default {
     /* Enter and leave animations can use different */
     /* durations and timing functions.              */
     .slide-fade-enter-active {
-        transition: all 0.7s ease-out;
+        transition: all 0.4s ease-out;
     }
 
     .slide-fade-leave-active {
