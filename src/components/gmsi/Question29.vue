@@ -50,8 +50,15 @@
 </script>
 
 <style lang="scss" scoped>
-    .p-field-radiobutton, h4{
-        text-align: left;
-        margin-left: 300px;
+    .p-field-radiobutton{
+        // text-align: left;
+        margin-left: 100px;
+    }
+    // h4 {
+    //     text-align: left;
+    // }
+    .radio-options {
+        text-align: center;
+        position: relative;
     }
 </style>

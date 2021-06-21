@@ -6,21 +6,21 @@
         <header>
             <h1>Music Skill Assessment</h1>
         </header>
+        <section>
+            <div class="p-shadow-1" id="instructions">
+                <h3>Task Instructions</h3>
+                In the following tasks you are asked to answer to <strong>questionnaires</strong> regarding your familiarity in music. You will also participate in a <strong> skill test</strong> to assess your music skills in different categories.
+                <br>
+                <br>
+                You will be asked in certain cases, to use a <strong>token</strong> in order to proceed to the next page. Make sure you follow the instructions on those tasks, to navigate successfully.
+            </div>
+            <div style="text-align: center">
+                <br>
+                <br>
+                <Button label="Begin" @click="stopTimer();addDemographics();$router.push({ name: 'Demographics', params: { userId: state.userId } })"/>
+            </div>
+        </section>
     </body>
-    <section>
-        <div class="p-shadow-1" id="instructions">
-            <h3>Task Instructions</h3>
-            In the following tasks you are asked to answer to <strong>questionnaires</strong> regarding your familiarity in music. You will also participate in a <strong> skill test</strong> to assess your music skills in different categories.
-            <br>
-            <br>
-            You will be asked in certain cases, to use a <strong>token</strong> in order to proceed to the next page. Make sure you follow the instructions on those tasks, to navigate successfully.
-        </div>
-        <div style="text-align: center">
-            <br>
-            <br>
-            <Button label="Begin" @click="stopTimer();addDemographics();$router.push({ name: 'Demographics', params: { userId: state.userId } })"/>
-        </div>
-    </section>
 </template>
 
 <script>
@@ -90,8 +90,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-header, section {
-    float: left;
+header {
+    text-align: left;
 }
 section {
     text-align: left;

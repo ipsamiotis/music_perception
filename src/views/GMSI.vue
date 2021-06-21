@@ -1,127 +1,138 @@
 <template>
-    <div>
-        <h3>Please select the most appropriate category for following questions:</h3>
-        <transition name="slide-fade" mode="out-in">
-        <div v-if="state.gmsiReplies.length === 0">
-            <Question1 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 1">
-            <Question2 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 2">
-            <Question3 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 3">
-            <Question4 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 4">
-            <Question5 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 5">
-            <Question6 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 6">
-            <Question7 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 7">
-            <Question8 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 8">
-            <Question9 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 9">
-            <Question10 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 10">
-            <Question11 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 11">
-            <Question12 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 12">
-            <Question13 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 13">
-            <Question14 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 14">
-            <Question15 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 15">
-            <Question16 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 16">
-            <Question17 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 17">
-            <Question18 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 18">
-            <Question19 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 19">
-            <Question20 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 20">
-            <Question21 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 21">
-            <Question22 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 22">
-            <Question23 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 23">
-            <Question24 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 24">
-            <Question25 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 25">
-            <Question26 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 26">
-            <Question27 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 27">
-            <Question28 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 28">
-            <Question29 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 29">
-            <Question30 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 30">
-            <Question31 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 31">
-            <Question32 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 32">
-            <Question33 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else-if="state.gmsiReplies.length === 33">
-            <Question34 :getAnswer="getAnswer"/>
-        </div>
-        <div v-else>
-            <h4 style="text-align:left;margin-left: 150px;">Thank you for your answers!</h4>
-        </div>
-        </transition>
+    <body>
+        <header>
+            <div id="branding">
+                <h1>Music Skill Assessment</h1>
+            </div>
+        </header>
+        <section>
+            <h3>Please select the most appropriate category for following questions:</h3>
+            <div class="radioOptions">
+                <transition name="slide-fade" mode="out-in">
+                <div v-if="state.gmsiReplies.length === 0">
+                    <Question1 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 1">
+                    <Question2 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 2">
+                    <Question3 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 3">
+                    <Question4 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 4">
+                    <Question5 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 5">
+                    <Question6 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 6">
+                    <Question7 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 7">
+                    <Question8 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 8">
+                    <Question9 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 9">
+                    <Question10 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 10">
+                    <Question11 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 11">
+                    <Question12 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 12">
+                    <Question13 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 13">
+                    <Question14 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 14">
+                    <Question15 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 15">
+                    <Question16 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 16">
+                    <Question17 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 17">
+                    <Question18 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 18">
+                    <Question19 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 19">
+                    <Question20 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 20">
+                    <Question21 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 21">
+                    <Question22 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 22">
+                    <Question23 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 23">
+                    <Question24 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 24">
+                    <Question25 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 25">
+                    <Question26 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 26">
+                    <Question27 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 27">
+                    <Question28 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 28">
+                    <Question29 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 29">
+                    <Question30 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 30">
+                    <Question31 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 31">
+                    <Question32 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 32">
+                    <Question33 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else-if="state.gmsiReplies.length === 33">
+                    <Question34 :getAnswer="getAnswer"/>
+                </div>
+                <div v-else>
+                    <h4 style="text-align:center;">Thank you for your answers!</h4>
+                </div>
+                </transition>
 
-        <!-- <div v-else-if="state.gmsiReplies.length === 34">
-            <Question35 :getAnswer="getAnswer"/>
-        </div> -->
-        <!--
-        <h4>35. The instrument I play best (including voice) is:</h4>
-        <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
-        <h4>36. What age did you start to play an instrument?</h4>
-        <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
-        <h4>37. "Do you have absolute pitch? Absolute or perfect pitch is the ability to recognise and name an isolated musical tone without a reference tone, e.g. being able to say 'F#' if someone plays that note on the piano."</h4>
-        <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
-        -->
-    </div>
-    <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'PROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
+                <!-- <div v-else-if="state.gmsiReplies.length === 34">
+                    <Question35 :getAnswer="getAnswer"/>
+                </div> -->
+                <!--
+                <h4>35. The instrument I play best (including voice) is:</h4>
+                <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
+                <h4>36. What age did you start to play an instrument?</h4>
+                <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
+                <h4>37. "Do you have absolute pitch? Absolute or perfect pitch is the ability to recognise and name an isolated musical tone without a reference tone, e.g. being able to say 'F#' if someone plays that note on the piano."</h4>
+                <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
+                -->
+            </div>
+        </section>
+        <div id="next-button">
+                <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'PROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
+        </div>
+    </body>
 </template>
 
 <script>
@@ -278,7 +289,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .p-field-radiobutton, h4{
+    .p-field-radiobutton{
         text-align: left;
         margin-left: 150px;
     }
@@ -297,5 +308,25 @@ export default {
     {
         transform: translateX(20px);
         opacity: 0;
+    }
+
+    header {
+        text-align: left;
+    }
+    // #branding {
+    //     float: left;
+    // }
+    // #next-button {
+    //     float: right;
+    //     margin-top: 25px;
+    // }
+    // section {
+    //     text-align: center;
+    //     margin-left: 10px;
+    // }
+    .radioOptions {
+        display: inline-block;
+        // margin: 100px;
+        vertical-align: top;
     }
 </style>
