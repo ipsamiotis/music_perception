@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="radio-options">
         <h4>1. I spend a lot of my free time doing music-related activities.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
@@ -50,8 +50,15 @@
 </script>
 
 <style lang="scss" scoped>
-    .p-field-radiobutton, h4{
-        text-align: left;
-        margin-left: 300px;
+    .p-field-radiobutton{
+        // text-align: left;
+        margin-left: 150px;
+    }
+    // h4 {
+    //     text-align: left;
+    // }
+    .radio-options {
+        text-align: center;
+        position: relative;
     }
 </style>

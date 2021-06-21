@@ -1,18 +1,45 @@
 <template>
-    <div style="margin-left: 300px">
-        <h4>How mentally demanding was the task? <strong>{{state.value1}}</strong></h4>
-        <Slider v-model="state.value1" :step="1" :min="1" :max="10"/>
-        <h4>How physically demanding was the task? <strong>{{state.value2}}</strong></h4>
-        <Slider v-model="state.value2" :step="1" :min="1" :max="10"/>
-        <h4>How hurried or rushed was the pace of the task? <strong>{{state.value3}}</strong></h4>
-        <Slider v-model="state.value3" :step="1" :min="1" :max="10"/>
-        <h4>How successful were you in accomplishing what you were asked to do? <strong>{{state.value4}}</strong></h4>
-        <Slider v-model="state.value4" :step="1" :min="1" :max="10"/>
-        <h4>How hard did you have to work to accomplish your level of performance? <strong>{{state.value5}}</strong></h4>
-        <Slider v-model="state.value5" :step="1" :min="1" :max="10"/>
-        <h4>How insecure, discouraged, irritated, stressed, and annoyed were you? <strong>{{state.value6}}</strong></h4>
-        <Slider v-model="state.value6" :step="1" :min="1" :max="10"/>
-    </div>
+    <body>
+        <header>
+            <div id="branding">
+                <h1>Music Skill Assessment</h1>
+            </div>
+        </header>
+        <section>
+            <br>
+            <h3>How mentally demanding was the task? <small>(1-10)</small></h3>
+            <div class="slider">
+                <Slider v-model="state.value1" :step="1" :min="1" :max="10"/>
+            </div>
+            <span><strong>{{state.value1}}</strong></span>
+            <h3>How physically demanding was the task? <small>(1-10)</small></h3>
+            <div class="slider">
+                <Slider v-model="state.value2" :step="1" :min="1" :max="10"/>
+            </div>
+            <span><strong>{{state.value2}}</strong></span>
+            <h3>How hurried or rushed was the pace of the task? <small>(1-10)</small></h3>
+            <div class="slider">
+                <Slider v-model="state.value3" :step="1" :min="1" :max="10"/>
+            </div>
+            <span><strong>{{state.value3}}</strong></span>
+            <h3>How successful were you in accomplishing what you were asked to do? <small>(1-10)</small></h3>
+            <div class="slider">
+                <Slider v-model="state.value4" :step="1" :min="1" :max="10"/>
+            </div>
+            <span><strong>{{state.value4}}</strong></span>
+            <h3>How hard did you have to work to accomplish your level of performance? <small>(1-10)</small></h3>
+            <div class="slider">
+                <Slider v-model="state.value5" :step="1" :min="1" :max="10"/>
+            </div>
+            <span><strong>{{state.value5}}</strong></span>
+            <h3>How insecure, discouraged, irritated, stressed, and annoyed were you? <small>(1-10)</small></h3>
+            <div class="slider">
+                <Slider v-model="state.value6" :step="1" :min="1" :max="10"/>
+            </div>
+            <span><strong>{{state.value6}}</strong></span>
+        </section>
+        <br>
+    </body>
     <Button icon="pi pi-check" label="Submit" @click="enableNext()" class="p-button-success" />
 </template>
 
@@ -67,17 +94,10 @@ export default {
             }
         }
 
-        // async function getResultsSoFar() {
-        //     const { data } = await axios.get("http://localhost:3000/crowd-results/");
-        //     let [last] = data.slice(-1);
-        //     state.lastId = last.id
-        // }
-
         function startTimer() {
             state.timer = setInterval(()=>{
                 state.reactionTime += 10
             }, 10)
-            // getResultsSoFar()
         }
 
         function stopTimer() {
@@ -101,15 +121,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.p-slider-horizontal, .p-inputtext {
-    width: 14rem;
+    .p-slider-horizontal, .p-inputtext {
+        width: 14rem;
 
-    // margin-left: 150px;
-}
-.p-slider-vertical {
-     height: 14rem;
-}
-h4 {
-    text-align: left;
-}
+        // margin-left: 150px;
+    }
+    .p-slider-vertical {
+        height: 14rem;
+    }
+// h3 {
+//     text-align: left;
+// }
+    header {
+        text-align: left;
+    }
+    section {
+        text-align: center;
+        margin-left: 10px;
+    }
+    h3{
+        text-align: center;
+    }
+    .slider {
+        display: inline-block;
+    }
+    span {
+        color: #1E88E5;
+        margin-left: 15px;
+    }
 </style>

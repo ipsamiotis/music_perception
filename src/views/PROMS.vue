@@ -1,15 +1,26 @@
 <template>
-    <div>
-        <h3>Music Skill Test.</h3>
-        <small>After completing the tasks below, you'll be presented with a token. Use that token in the text field to continue.</small><br>
-        <strong>Enter token here: </strong>
-        <InputText id="continueToken" type="text" v-model="state.token"/>
-        <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'NASA', params: { userId: userId } })" :disabled="state.isDisabled"/>
-        <br>
-        <br>
-        <iframe src="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en" width="100%"
-            height="920" frameborder="1"></iframe>
-    </div>
+    <body>
+        <header>
+            <div id="branding">
+                <h1>Music Skill Assessment</h1>
+            </div>
+            <div id="continue-token">
+                <strong>Enter second token here: </strong>
+                <InputText id="continueToken" type="text" v-model="state.token"/>
+                <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'NASA', params: { userId: userId } })" :disabled="state.isDisabled"/>
+            </div>
+        </header>
+        <section>
+            <h3>To begin the music skill test below, copy the token below and paste it to the proper field below</h3>
+            <h2 style="color: #1E88E5;"><span style="background-color: #efefef;">{{userId}}</span></h2>
+            <strong>After completing</strong> the tasks below, you'll be presented with a <strong>second token</strong>. Use that token in the text field to the <strong>top</strong> to continue.
+            <br>
+            <br>
+            <br>
+            <iframe src="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en" width="100%"
+                height="920" frameborder="1"></iframe>
+        </section>
+    </body>
 </template>
 
 <script>
@@ -85,17 +96,10 @@ export default {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        // async function getResultsSoFar() {
-        //     const { data } = await axios.get("http://localhost:3000/crowd-results/");
-        //     let [last] = data.slice(-1);
-        //     state.lastId = last.id
-        // }
-
         function startTimer() {
             state.timer = setInterval(()=>{
                 state.reactionTime += 10
             }, 10)
-            // getResultsSoFar()
         }
 
         function stopTimer() {
@@ -131,5 +135,28 @@ export default {
 
 .p-field * {
     display: block;
+}
+
+header {
+    text-align: left;
+    // padding-top: 10px;
+    padding-bottom: 10px;
+    // padding-left: 25px;
+    height: 55px;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+#branding {
+    float: left;
+}
+
+#continue-token {
+    float: right;
+}
+
+section {
+    text-align: center;
+    margin-left: 10px;
 }
 </style>

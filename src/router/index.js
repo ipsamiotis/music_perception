@@ -3,6 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
     {
         path: '/',
+        name: 'Introduction',
+        component: () => import('@/views/Introduction.vue')
+    },
+    {
+        path: '/demographics/:userId',
         name: 'Demographics',
         component: () => import('@/views/Demographics.vue')
     },
