@@ -121,11 +121,12 @@
         <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
         -->
     </div>
-    <Button label="Next" @click="stopTimer();addDemographics();$router.push('proms')" :disabled="state.isDisabled"/>
+    <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'PROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
 </template>
 
 <script>
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, computed } from 'vue';
+import {useRoute} from 'vue-router'
 
 import Button from 'primevue/button';
 
@@ -206,6 +207,9 @@ export default {
     },
 
     setup(){
+        const route = useRoute();
+        const userId = computed(() => route.params.userId)
+
         const state = reactive({
             isDisabled : true,
             gmsiReplies: [],
@@ -249,17 +253,17 @@ export default {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        async function getResultsSoFar() {
-            const { data } = await axios.get("http://localhost:3000/crowd-results/");
-            let [last] = data.slice(-1);
-            state.lastId = last.id
-        }
+        // async function getResultsSoFar() {
+        //     const { data } = await axios.get("http://localhost:3000/crowd-results/");
+        //     let [last] = data.slice(-1);
+        //     state.lastId = last.id
+        // }
 
         function startTimer() {
             state.timer = setInterval(()=>{
                 state.reactionTime += 10
             }, 10)
-            getResultsSoFar()
+            // getResultsSoFar()
         }
 
         function stopTimer() {
@@ -269,12 +273,12 @@ export default {
 
         async function addDemographics() {
             const headers = {"Content-Type": "application/json"}
-            await axios.patch(`http://localhost:3000/crowd-results/${state.lastId}`, {
+            await axios.patch(`http://localhost:3000/crowd-results/${userId.value}`, {
                 gmsi: state.gmsiReplies
             }, {headers});
         }
 
-        return { state, getAnswer, addReply, replaceReply, enableNext, sleep, getResultsSoFar, addDemographics, startTimer, stopTimer}
+        return { state, getAnswer, addReply, replaceReply, enableNext, sleep, addDemographics, startTimer, stopTimer, userId}
     }
 }
 

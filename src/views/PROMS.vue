@@ -4,7 +4,7 @@
         <small>After completing the tasks below, you'll be presented with a token. Use that token in the text field to continue.</small><br>
         <strong>Enter token here: </strong>
         <InputText id="continueToken" type="text" v-model="state.token"/>
-        <Button label="Continue" @click="stopTimer();addDemographics();$router.push('nasa')" :disabled="state.isDisabled"/>
+        <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'NASA', params: { userId: userId } })" :disabled="state.isDisabled"/>
         <br>
         <br>
         <iframe src="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en" width="100%"
@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import { reactive, onMounted, watch } from 'vue'
+import { reactive, onMounted, watch, computed } from 'vue'
+import {useRoute} from 'vue-router'
 
 import axios from 'axios'
 
@@ -26,6 +27,9 @@ export default {
         InputText
     },
     setup () {
+        const route = useRoute();
+        const userId = computed(() => route.params.userId)
+
         const state = reactive({
             isDisabled : true,
             promsReplies: [],
@@ -81,17 +85,17 @@ export default {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        async function getResultsSoFar() {
-            const { data } = await axios.get("http://localhost:3000/crowd-results/");
-            let [last] = data.slice(-1);
-            state.lastId = last.id
-        }
+        // async function getResultsSoFar() {
+        //     const { data } = await axios.get("http://localhost:3000/crowd-results/");
+        //     let [last] = data.slice(-1);
+        //     state.lastId = last.id
+        // }
 
         function startTimer() {
             state.timer = setInterval(()=>{
                 state.reactionTime += 10
             }, 10)
-            getResultsSoFar()
+            // getResultsSoFar()
         }
 
         function stopTimer() {
@@ -101,13 +105,13 @@ export default {
 
         async function addDemographics() {
             const headers = {"Content-Type": "application/json"}
-            await axios.patch(`http://localhost:3000/crowd-results/${state.lastId}`, {
+            await axios.patch(`http://localhost:3000/crowd-results/${userId.value}`, {
                 proms: state.promsReplies
             }, {headers});
         }
 
         return {
-            state, getAnswer, getResultsSoFar, stopTimer, addDemographics
+            state, getAnswer, stopTimer, addDemographics, userId
         }
     }
 }

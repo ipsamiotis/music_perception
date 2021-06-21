@@ -89,7 +89,7 @@
             <label for="age6">Older than 65 years</label>
         </div>
     </div>
-    <Button label="Next" @click="stopTimer();addDemographics();$router.push('gmsi')" :disabled="state.isDisabled"/>
+    <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'GMSI', params: { userId: state.userId } })" :disabled="state.isDisabled"/>
 
 </template>
 
@@ -113,7 +113,7 @@ export default {
             age : '',
             education : '',
             isDisabled : true,
-            lastId: '',
+            userId: '',
             demoReplies: [],
             timer: null,
             reactionTime: 0 // in ms
@@ -173,6 +173,7 @@ export default {
             state.timer = setInterval(()=>{
                 state.reactionTime += 10
             }, 10)
+            state.userId = makeid(6)
         }
 
         function stopTimer() {
@@ -181,12 +182,24 @@ export default {
         }
 
         async function addDemographics() {
-            await axios.post(`http://localhost:3000/crowd-results/${state.lastId}`, {
-                demographics: state.demoReplies
+            await axios.post(`http://localhost:3000/crowd-results/`, {
+                demographics: state.demoReplies,
+                id: state.userId
             });
         }
 
-        return {state, enableNext, addReply, addDemographics, startTimer, stopTimer}
+        function makeid(length) {
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() *
+        charactersLength));
+        }
+        return result;
+        }
+
+        return {state, enableNext, addReply, addDemographics, startTimer, stopTimer, makeid}
     }
 }
 

@@ -1,33 +1,25 @@
-import { createRouter, createWebHistory } from 'vue-router' //
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
     {
         path: '/',
-        name: 'Home',
-        component: Home,
-        children: [
-            {
-                path: '',
-                name: 'Demographics',
-                component: () => import('@/views/Demographics.vue'),
-            },
-            {
-                path: 'gmsi',
-                name: 'GMSI',
-                component: () => import('@/views/GMSI.vue')
-            },
-            {
-                path: 'proms',
-                name: 'PROMS',
-                component: () => import('@/views/PROMS.vue')
-            },
-            {
-                path: 'nasa',
-                name: 'NASA',
-                component: () => import('@/views/NASA.vue')
-            }
-        ]
+        name: 'Demographics',
+        component: () => import('@/views/Demographics.vue')
+    },
+    {
+        path: '/gmsi/:userId',
+        name: 'GMSI',
+        component: () => import('@/views/GMSI.vue')
+    },
+    {
+        path: '/proms/:userId',
+        name: 'PROMS',
+        component: () => import('@/views/PROMS.vue')
+    },
+    {
+        path: '/nasa/:userId',
+        name: 'NASA',
+        component: () => import('@/views/NASA.vue')
     },
     {
         path: '/final',

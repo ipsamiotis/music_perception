@@ -17,7 +17,9 @@
 </template>
 
 <script>
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, computed } from 'vue';
+
+import {useRoute} from 'vue-router'
 import router from '@/router/index.js'
 
 import Slider from 'primevue/slider';
@@ -32,6 +34,9 @@ export default {
     },
 
     setup(){
+        const route = useRoute();
+        const userId = computed(() => route.params.userId)
+
         const state = reactive({
             value1: 0,
             value2: 0,
@@ -62,17 +67,17 @@ export default {
             }
         }
 
-        async function getResultsSoFar() {
-            const { data } = await axios.get("http://localhost:3000/crowd-results/");
-            let [last] = data.slice(-1);
-            state.lastId = last.id
-        }
+        // async function getResultsSoFar() {
+        //     const { data } = await axios.get("http://localhost:3000/crowd-results/");
+        //     let [last] = data.slice(-1);
+        //     state.lastId = last.id
+        // }
 
         function startTimer() {
             state.timer = setInterval(()=>{
                 state.reactionTime += 10
             }, 10)
-            getResultsSoFar()
+            // getResultsSoFar()
         }
 
         function stopTimer() {
@@ -82,12 +87,12 @@ export default {
 
         async function addDemographics() {
             const headers = {"Content-Type": "application/json"}
-            await axios.patch(`http://localhost:3000/crowd-results/${state.lastId}`, {
+            await axios.patch(`http://localhost:3000/crowd-results/${userId.value}`, {
                 nasa: state.nasaReplies
             }, {headers})
         }
 
-        return {state, enableNext, getResultsSoFar, addDemographics, startTimer, stopTimer}
+        return {state, enableNext, addDemographics, startTimer, stopTimer}
     }
 
 }
