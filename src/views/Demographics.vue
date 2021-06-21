@@ -89,12 +89,13 @@
             <label for="age6">Older than 65 years</label>
         </div>
     </div>
-    <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'GMSI', params: { userId: state.userId } })" :disabled="state.isDisabled"/>
+    <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'GMSI', params: { userId: userId } })" :disabled="state.isDisabled"/>
 
 </template>
 
 <script>
-import { reactive, watch, onMounted } from 'vue';
+import { reactive, watch, onMounted, computed } from 'vue';
+import {useRoute} from 'vue-router'
 
 import RadioButton from 'primevue/radiobutton';
 import Button from 'primevue/button';
@@ -108,12 +109,14 @@ export default {
     },
 
     setup(){
+        const route = useRoute();
+        const userId = computed(() => route.params.userId);
+
         const state = reactive({
             occupation : '',
             age : '',
             education : '',
             isDisabled : true,
-            userId: '',
             demoReplies: [],
             timer: null,
             reactionTime: 0 // in ms
@@ -173,7 +176,6 @@ export default {
             state.timer = setInterval(()=>{
                 state.reactionTime += 10
             }, 10)
-            state.userId = makeid(6)
         }
 
         function stopTimer() {
@@ -182,24 +184,13 @@ export default {
         }
 
         async function addDemographics() {
-            await axios.post(`http://localhost:3000/crowd-results/`, {
-                demographics: state.demoReplies,
-                id: state.userId
-            });
+            const headers = {"Content-Type": "application/json"}
+            await axios.patch(`http://localhost:3000/crowd-results/${userId.value}`, {
+                demographics: state.demoReplies
+            }, {headers});
         }
 
-        function makeid(length) {
-            var result           = '';
-            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            var charactersLength = characters.length;
-            for ( var i = 0; i < length; i++ ) {
-            result += characters.charAt(Math.floor(Math.random() *
-        charactersLength));
-        }
-        return result;
-        }
-
-        return {state, enableNext, addReply, addDemographics, startTimer, stopTimer, makeid}
+        return {state, enableNext, addReply, addDemographics, startTimer, stopTimer, userId}
     }
 }
 

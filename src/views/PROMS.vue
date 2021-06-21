@@ -85,17 +85,10 @@ export default {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        // async function getResultsSoFar() {
-        //     const { data } = await axios.get("http://localhost:3000/crowd-results/");
-        //     let [last] = data.slice(-1);
-        //     state.lastId = last.id
-        // }
-
         function startTimer() {
             state.timer = setInterval(()=>{
                 state.reactionTime += 10
             }, 10)
-            // getResultsSoFar()
         }
 
         function stopTimer() {
