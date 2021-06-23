@@ -130,7 +130,7 @@
             </div>
         </section>
         <div id="next-button">
-                <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'PROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
+                <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'Equipment', params: { userId: userId } })" :disabled="state.isDisabled"/>
         </div>
     </body>
 </template>

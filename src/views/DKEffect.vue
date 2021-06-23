@@ -61,12 +61,11 @@ export default {
         const userId = computed(() => route.params.userId)
 
         const state = reactive({
-            // value1: -1,
-            value2: -1,
-            value3: -1,
-            value4: -1,
-            value5: -1,
-            nasaReplies: [],
+            value2: null,
+            value3: null,
+            value4: null,
+            value5: null,
+            dkReplies: [],
             isDisabled: true,
             timer: null,
             reactionTime: 0 // in ms
@@ -79,8 +78,8 @@ export default {
         })
 
         function enableNext() {
-            if (state.value2 != -1 && state.value3 != -1 && state.value4 != -1 && state.value5 != -1){
-                state.nasaReplies = [state.value1, state.value2, state.value3, state.value4, state.value5, state.value6]
+            if (state.value2 != null && state.value3 != null && state.value4 != null && state.value5 != null){
+                state.dkReplies = [state.value2, state.value3, state.value4, state.value5]
                 stopTimer()
                 addDemographics()
                 router.push({ name: 'NASA', params: { userId: userId.value } })
@@ -97,13 +96,13 @@ export default {
 
         function stopTimer() {
             clearInterval(state.timer)
-            state.nasaReplies.push({"time_spent": state.reactionTime})
+            state.dkReplies.push({"time_spent": state.reactionTime})
         }
 
         async function addDemographics() {
             const headers = {"Content-Type": "application/json"}
             await axios.patch(`http://localhost:3000/crowd-results/${userId.value}`, {
-                nasa: state.nasaReplies
+                dkeffect: state.dkReplies
             }, {headers})
         }
 
