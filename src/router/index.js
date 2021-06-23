@@ -17,9 +17,19 @@ const routes = [
         component: () => import('@/views/GMSI.vue')
     },
     {
+        path: '/equipment/:userId',
+        name: 'Equipment',
+        component: () => import('@/views/Equipment.vue')
+    },
+    {
         path: '/proms/:userId',
         name: 'PROMS',
         component: () => import('@/views/PROMS.vue')
+    },
+    {
+        path: '/dkeffect/:userId',
+        name: 'DKEffect',
+        component: () => import('@/views/DKEffect.vue')
     },
     {
         path: '/nasa/:userId',
