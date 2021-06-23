@@ -5,14 +5,14 @@
                 <h1>Music Skill Assessment</h1>
             </div>
             <div id="continue-token">
-                <strong>Enter second token here: </strong>
+                Enter <strong>second token</strong> here: 
                 <InputText id="continueToken" type="text" v-model="state.token"/>
-                <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'NASA', params: { userId: userId } })" :disabled="state.isDisabled"/>
+                <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'DKEffect', params: { userId: userId } })" :disabled="state.isDisabled"/>
             </div>
         </header>
         <section>
-            <h3>To begin the music skill test below, copy the token below and paste it to the proper field below</h3>
-            <h2 style="color: #1E88E5;"><span style="background-color: #efefef;">{{userId}}</span></h2>
+            <h3>To begin the music skill test below, copy the first token below and paste it to the proper field below</h3>
+            <h2>First Token: <span style="color: #1E88E5;background-color: #efefef;">{{userId}}</span></h2>
             <strong>After completing</strong> the tasks below, you'll be presented with a <strong>second token</strong>. Use that token in the text field to the <strong>top</strong> to continue.
             <br>
             <br>

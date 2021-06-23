@@ -22,6 +22,11 @@ const routes = [
         component: () => import('@/views/PROMS.vue')
     },
     {
+        path: '/dkeffect/:userId',
+        name: 'DKEffect',
+        component: () => import('@/views/DKEffect.vue')
+    },
+    {
         path: '/nasa/:userId',
         name: 'NASA',
         component: () => import('@/views/NASA.vue')
