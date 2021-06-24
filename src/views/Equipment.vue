@@ -6,10 +6,10 @@
             </div>
         </header>
         <section>
-            <h2 style="text-align: left">Task Description</h2>
+            <!-- <h2 style="text-align: left">Task Description</h2> -->
             <h3 style="border-bottom: 4px solid #efefef;">Please indicate the audio equipment you used during the music skill test, its condition and how noisy was your environment at the moment.</h3>
             <div class="equipQ">
-                <h4>What audio equipment were you using during the test?</h4>
+                <h4>What audio equipment were you using during the music skill test?</h4>
                 <div class="p-field-radiobutton">
                     <RadioButton id="equip1" name="equipment" value="Headphones" v-model="state.equipment" />
                     <label for="equip1">Headphones</label>
@@ -73,7 +73,7 @@
                     <label for="impair5">Very_annoying</label>
                 </div>
             </div>
-            <h4>How noisy was the environment around you? <small>(1-10)</small></h4>
+            <h4>How noisy was the environment around you? <small>(Quiet: 1 - Uncomfortably Noisy: 10)</small></h4>
             <span><strong>{{state.noise}}</strong></span>
             <br>
             <div class="slider">

@@ -11,10 +11,15 @@
                 <h3>Task Instructions</h3>
                 <strong>Welcome to our study on Music Skills!</strong>
                 <br>
-                In the following tasks you are asked to fill in <strong>questionnaires</strong> regarding your familiarity in music (~8mins). You will also participate in a <strong> skill test</strong> to assess your music skills (~15mins) on different categories. Finally, you will be asked to fill in a <strong>post-test survey</strong> (~3mins).
+                <ul>
+                    <li>In the following tasks you are asked to fill in <strong>questionnaires</strong> regarding your familiarity in music (~8mins).</li>
+                    <li>You will also participate in a <strong> skill test</strong> to assess your music skills (~15mins) on different categories.</li>
+                    <li>Finally, you will be asked to fill in a <strong>post-test survey</strong> (~3mins).</li>
+                </ul>
                 <br>
-                <br>
-                You will be asked in certain cases, to use a <strong>token</strong> in order to proceed to the next page. Make sure you follow the instructions on those tasks, to navigate successfully.
+                <!-- <h1>WORKER ID</h1> -->
+                <!-- You will be asked in certain cases, to use a <strong>token</strong> in order to proceed to the next page. -->
+                Make sure you follow the instructions on the tasks, to navigate successfully.
             </div>
             <div style="text-align: center">
                 <br>
@@ -77,7 +82,7 @@ export default {
             result += characters.charAt(Math.floor(Math.random() *
         charactersLength));
         }
-        return result;
+            return result;
         }
 
         return {

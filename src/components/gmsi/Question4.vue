@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h4>4-34. I don't spend much of my disposable income on music.</h4>
+        <h4>4/34. I don't spend much of my disposable income on music.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
-            <RadioButton :id="option.key" name="option" :value="option.value" v-model="state.value"/>
+            <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>
         </div>
     </div>
@@ -22,13 +22,13 @@
         setup(props){
             const state = reactive({
                 agreeOptions: [
-                    {value: 'Completely Disagree', key: 1},
-                    {value: 'Strongly Disagree', key: 2},
-                    {value: 'Disagree', key: 3},
-                    {value: 'Neither Agree or Disagree', key: 4},
-                    {value: 'Agree', key: 5},
-                    {value: 'Strongly Agree', key: 6},
-                    {value: 'Completely Agree', key: 7},
+                    {name: 'Completely Disagree', key: 1},
+                    {name: 'Strongly Disagree', key: 2},
+                    {name: 'Disagree', key: 3},
+                    {name: 'Neither Agree or Disagree', key: 4},
+                    {name: 'Agree', key: 5},
+                    {name: 'Strongly Agree', key: 6},
+                    {name: 'Completely Agree', key: 7},
                 ],
                 value: {}
             })
