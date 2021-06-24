@@ -4,21 +4,28 @@
             <div id="branding">
                 <h1>Music Skill Assessment</h1>
             </div>
-            <div id="continue-token">
-                Enter <strong>second token</strong> here: 
-                <InputText id="continueToken" type="text" v-model="state.token"/>
-                <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'DKEffect', params: { userId: userId } })" :disabled="state.isDisabled"/>
-            </div>
         </header>
         <section>
-            <h3>To begin the music skill test below, copy the first token below and paste it to the proper field below</h3>
+            <h3 style="text-align:left;">Task Description</h3>
+            To begin the music skill test, <strong>copy the characters below</strong> and press the button to access the music skill test. Please <strong>paste it when prompted</strong>.
+            <br>
+            When you will finish the music skill test, you will be provided with a <strong>second set of characters</strong>. Please <strong>return to this page</strong> and place those characters to the entry below, to continue.
+            <!-- <h3>To begin the music skill test , copy the characters below and paste them to the proper </h3> -->
             <h2>First Token: <span style="color: #1E88E5;background-color: #efefef;">{{userId}}</span></h2>
             <strong>After completing</strong> the tasks below, you'll be presented with a <strong>second token</strong>. Use that token in the text field to the <strong>top</strong> to continue.
             <br>
             <br>
             <br>
-            <iframe src="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en" width="100%"
-                height="920" frameborder="1"></iframe>
+            <Button label="Access Music Skill Test here!" @click="openSkillTest()"/>
+            <br>
+            <div id="continue-token">
+                Enter <strong>second token</strong> here:
+                <InputText id="continueToken" type="text" v-model="state.token"/>
+                <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'DKEffect', params: { userId: userId } })" :disabled="state.isDisabled"/>
+            </div>
+            <!-- <a href="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en">Access Music Skill Test here!</a> -->
+            <!-- <iframe src="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en" width="100%"
+                height="920" frameborder="1"></iframe> -->
         </section>
     </body>
 </template>
@@ -114,8 +121,12 @@ export default {
             }, {headers});
         }
 
+        function openSkillTest(){
+            window.open('https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en')
+        }
+
         return {
-            state, getAnswer, stopTimer, addDemographics, userId
+            state, getAnswer, stopTimer, addDemographics, userId, openSkillTest
         }
     }
 }
@@ -152,7 +163,8 @@ header {
 }
 
 #continue-token {
-    float: right;
+    margin-top: 40px;
+    display: inline-block;
 }
 
 section {

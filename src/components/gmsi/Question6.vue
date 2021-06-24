@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h4>6. I listen attentively to music for _____ per day.</h4>
+        <h4>6-34. I listen attentively to music for _____ per day.</h4>
         <div v-for="option of state.minsOptions" :key="option.key" class="p-field-radiobutton">
-            <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
+            <RadioButton :id="option.key" name="option" :value="option.value" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>
         </div>
     </div>
@@ -22,13 +22,13 @@
         setup(props){
             const state = reactive({
                 minsOptions: [
-                    {name: '0-15 mins', key: 1},
-                    {name: '15-30 mins', key: 2},
-                    {name: '30-60 mins', key: 3},
-                    {name: '60-90 mins', key: 4},
-                    {name: '2 hrs', key: 5},
-                    {name: '2-3 hrs', key: 6},
-                    {name: '4 hrs or more', key: 7},
+                    {value: '0-15 mins', key: 1},
+                    {value: '15-30 mins', key: 2},
+                    {value: '30-60 mins', key: 3},
+                    {value: '60-90 mins', key: 4},
+                    {value: '2 hrs', key: 5},
+                    {value: '2-3 hrs', key: 6},
+                    {value: '4 hrs or more', key: 7},
                 ],
                 value: {}
             })

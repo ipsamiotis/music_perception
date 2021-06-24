@@ -222,4 +222,10 @@ export default {
         text-align: left;
         margin-left: 150px;
     }
+    // .demoQ {
+    //     display: inline-block;
+    // }
+    #next-button {
+        margin-bottom: 55px;
+    }
 </style>

@@ -9,7 +9,9 @@
         <section>
             <div class="p-shadow-1" id="instructions">
                 <h3>Task Instructions</h3>
-                In the following tasks you are asked to answer to <strong>questionnaires</strong> regarding your familiarity in music. You will also participate in a <strong> skill test</strong> to assess your music skills in different categories.
+                <strong>Welcome to our study on Music Skills!</strong>
+                <br>
+                In the following tasks you are asked to fill in <strong>questionnaires</strong> regarding your familiarity in music (~8mins). You will also participate in a <strong> skill test</strong> to assess your music skills (~15mins) on different categories. Finally, you will be asked to fill in a <strong>post-test survey</strong> (~3mins).
                 <br>
                 <br>
                 You will be asked in certain cases, to use a <strong>token</strong> in order to proceed to the next page. Make sure you follow the instructions on those tasks, to navigate successfully.

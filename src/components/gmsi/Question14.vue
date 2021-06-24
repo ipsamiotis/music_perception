@@ -1,8 +1,8 @@
 <template>
     <div>
-        <h4>14. "I engaged in regular, daily practice of a musical instrument (including voice) for_ years."</h4>
+        <h4>14-34. "I engaged in regular, daily practice of a musical instrument (including voice) for_ years."</h4>
         <div v-for="option of state.numOptions" :key="option.key" class="p-field-radiobutton">
-            <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
+            <RadioButton :id="option.key" name="option" :value="option.value" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>
         </div>
     </div>
@@ -22,13 +22,13 @@
         setup(props){
             const state = reactive({
                 numOptions: [
-                    {name: '0', key: 1},
-                    {name: '1', key: 2},
-                    {name: '2', key: 3},
-                    {name: '3', key: 4},
-                    {name: '4-5', key: 5},
-                    {name: '6-9', key: 6},
-                    {name: '10 or more', key: 7},
+                    {value: '0', key: 1},
+                    {value: '1', key: 2},
+                    {value: '2', key: 3},
+                    {value: '3', key: 4},
+                    {value: '4-5', key: 5},
+                    {value: '6-9', key: 6},
+                    {value: '10 or more', key: 7},
                 ],
                 value: {}
             })

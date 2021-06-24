@@ -6,9 +6,10 @@
             </div>
         </header>
         <section>
-            <h3>Please indicate your equipment, its condition and how noisy is your environment.</h3>
+            <h2 style="text-align: left">Task Description</h2>
+            <h3 style="border-bottom: 4px solid #efefef;">Please indicate the audio equipment you used during the music skill test, its condition and how noisy was your environment at the moment.</h3>
             <div class="equipQ">
-                <h4>What audio equipment are you using?</h4>
+                <h4>What audio equipment were you using during the test?</h4>
                 <div class="p-field-radiobutton">
                     <RadioButton id="equip1" name="equipment" value="Headphones" v-model="state.equipment" />
                     <label for="equip1">Headphones</label>
@@ -27,7 +28,7 @@
                 </div>
             </div>
             <div class="equipQ">
-                <h4>What is the condition of your audio equipment?</h4>
+                <h4>What was the condition of your audio equipment?</h4>
                 <div class="p-field-radiobutton">
                     <RadioButton id="cond1" name="condition" value="Excellent" v-model="state.condition" />
                     <label for="cond1">Excellent</label>
@@ -72,22 +73,24 @@
                     <label for="impair5">Very_annoying</label>
                 </div>
             </div>
-            <h4>How noisy is the environment around you? <small>(1-10)</small></h4>
+            <h4>How noisy was the environment around you? <small>(1-10)</small></h4>
+            <span><strong>{{state.noise}}</strong></span>
+            <br>
+            <div class="slider">
+                <Slider v-model="state.noise" :step="1" :min="1" :max="10"/>
+            </div>
+            <br>
             <div class="prompt" v-if="state.noise <= 2 && Number.isInteger(state.noise)"><small>{{state.noiseLevels[0]}}</small></div>
             <div class="prompt" v-else-if="(state.noise <= 4) && (state.noise > 2) && Number.isInteger(state.noise)"><small>{{state.noiseLevels[1]}}</small></div>
             <div class="prompt" v-else-if="(state.noise <= 6) && (state.noise > 4) && Number.isInteger(state.noise)"><small>{{state.noiseLevels[2]}}</small></div>
             <div class="prompt" v-else-if="(state.noise <= 8) && (state.noise > 6) && Number.isInteger(state.noise)"><small>{{state.noiseLevels[3]}}</small></div>
             <div class="prompt" v-else-if="(state.noise <= 10) && (state.noise > 8) && Number.isInteger(state.noise)"><small>{{state.noiseLevels[4]}}</small></div>
             <br>
-            <div class="slider">
-                <Slider v-model="state.noise" :step="1" :min="1" :max="10"/>
-                <span><strong>{{state.noise}}</strong></span>
-            </div>
         </section>
         <br>
-        <br>
+        <!-- <br> -->
         <div style="margin-bottom: 30px;" id="next-button">
-            <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'PROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
+            <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'NASA', params: { userId: userId } })" :disabled="state.isDisabled"/>
         </div>
     </body>
 </template>
@@ -118,11 +121,11 @@ export default {
             impairment: '',
             noise: null,
             noiseLevels: [
-                'Someone could comfortably hear you use a whisper/very quite voice from 1 metre away (e.g. library)',
-                'You could easily hold a conversation with someone 1 metre away from you without raising your voice',
-                'Conversation is possible with someone 1 metre away, but requires you to raise your voice (e.g., noisy cafe)',
-                'You need to shout to be heard by someone 1 metre away. Difficult to hold a conversation',
-                'Cannot be heard by someone 1 metre away, even when shouting. Volume level may be uncomfortable after a short time'
+                '"Someone could comfortably hear you use a whisper/very quite voice from 1 metre (~3 feet) away (e.g. library)"',
+                '"You could easily hold a conversation with someone 1 metre (~3 feet) away from you without raising your voice"',
+                '"Conversation is possible with someone 1 metre (~3 feet) away, but requires you to raise your voice (e.g., noisy cafe)"',
+                '"You need to shout to be heard by someone 1 metre (~3 feet) away. Difficult to hold a conversation"',
+                '"Cannot be heard by someone 1 metre (~3 feet) away, even when shouting. Volume level may be uncomfortable after a short time"'
             ],
             isDisabled : true,
             equipReplies: [],
@@ -221,6 +224,9 @@ function addReply(reply) {
         text-align: left;
         margin-left: 150px;
     }
+    .noise {
+        float: left;
+    }
     .p-slider-horizontal, .p-inputtext {
     width: 14rem;
         // margin-left: 150px;
@@ -229,16 +235,20 @@ function addReply(reply) {
         height: 14rem;
     }
     .slider {
-        display: inline-block;
-        // margin-left: 150px;
-        // margin-top: 10px
+        // float: left;
+        text-align: left;
+        // display: inline-block;
+        margin-left: 160px;
+        // margin-top: 20px
     }
-    // .prompt {
-    //     text-align: left;
-    //     margin-left: 150px;
-    // }
+    .prompt {
+        text-align: left;
+        margin-left: 150px;
+    }
     span {
         color: #1E88E5;
-        margin-top: 15px;
+        margin-top: 13px;
+        float: left;
+        margin-left: 410px;
     }
 </style>

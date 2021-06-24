@@ -82,7 +82,7 @@ export default {
                 state.dkReplies = [state.value2, state.value3, state.value4, state.value5]
                 stopTimer()
                 addDemographics()
-                router.push({ name: 'NASA', params: { userId: userId.value } })
+                router.push({ name: 'Equipment', params: { userId: userId.value } })
             } else {
                 alert("Please reply to all questions first")
             }
