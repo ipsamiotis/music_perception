@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>26. I can tell when people sing or play out of tune.</h4>
+        <h4>26/34. I can tell when people sing or play out of tune.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

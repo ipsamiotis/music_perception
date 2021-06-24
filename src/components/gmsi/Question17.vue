@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>17. I have had formal training in music theory for _ years.</h4>
+        <h4>17/34. I have had formal training in music theory for _ years.</h4>
         <div v-for="option of state.numOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

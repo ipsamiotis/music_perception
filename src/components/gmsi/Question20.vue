@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>20. I would not consider myself a musician.</h4>
+        <h4>20/34. I would not consider myself a musician.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

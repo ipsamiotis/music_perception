@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>24. I have trouble recognizing a familiar song when played in a different way or by a different performer.</h4>
+        <h4>24/34. I have trouble recognizing a familiar song when played in a different way or by a different performer.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

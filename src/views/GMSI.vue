@@ -113,6 +113,8 @@
                 </div>
                 <div v-else>
                     <h4 style="text-align:center;">Thank you for your answers!</h4>
+                    You just finished the first part of the study.
+                    You can proceed now to the second part, the <strong>Music Skill Test</strong>!
                 </div>
                 </transition>
 
@@ -130,7 +132,7 @@
             </div>
         </section>
         <div id="next-button">
-                <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'Equipment', params: { userId: userId } })" :disabled="state.isDisabled"/>
+                <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'PROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
         </div>
     </body>
 </template>

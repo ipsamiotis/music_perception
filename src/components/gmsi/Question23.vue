@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>23. I can compare and discuss differences between two performances or versions of the same piece of music.</h4>
+        <h4>23/34. I can compare and discuss differences between two performances or versions of the same piece of music.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

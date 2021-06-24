@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>32. I don't like singing in public because I'm afraid that I would sing wrong notes.</h4>
+        <h4>32/34. I don't like singing in public because I'm afraid that I would sing wrong notes.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

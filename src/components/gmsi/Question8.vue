@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>8. I sometimes choose music that can trigger shivers down my spine.</h4>
+        <h4>8/34. I sometimes choose music that can trigger shivers down my spine.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

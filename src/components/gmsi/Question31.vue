@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>31. I am not able to sing in harmony when somebody is singing a familiar tune.</h4>
+        <h4>31/34. I am not able to sing in harmony when somebody is singing a familiar tune.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

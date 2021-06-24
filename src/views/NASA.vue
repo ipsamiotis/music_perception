@@ -7,36 +7,42 @@
         </header>
         <section>
             <br>
-            <h3>How mentally demanding was the task? <small>(1-10)</small></h3>
+            <h3>How mentally demanding was the overall study? <div class="values"><small>{{state.value1}}</small></div></h3>
             <div class="slider">
-                <Slider v-model="state.value1" :step="1" :min="1" :max="10"/>
+                <div class="values"> Not demanding at all</div>
+                <Slider style="vertical-align: middle;margin-left: 25px;display: inline-block;margin-right: 25px;" v-model="state.value1" :step="1" :min="0" :max="20"/>
+                <div class="values">Very demanding</div>
             </div>
-            <span><strong>{{state.value1}}</strong></span>
-            <h3>How physically demanding was the task? <small>(1-10)</small></h3>
+            <h3>How physically demanding was the overall study? <div class="values"><small>{{state.value2}}</small></div></h3>
             <div class="slider">
-                <Slider v-model="state.value2" :step="1" :min="1" :max="10"/>
+                <div class="values">Not demanding at all</div>
+                <Slider style="vertical-align: middle;margin-left: 25px;display: inline-block;margin-right: 25px;" v-model="state.value2" :step="1" :min="0" :max="20"/>
+                <div class="values">Very demanding</div>
             </div>
-            <span><strong>{{state.value2}}</strong></span>
-            <h3>How hurried or rushed was the pace of the task? <small>(1-10)</small></h3>
+            <h3>How hurried or rushed was the pace of the overall study? <div class="values"><small>{{state.value3}}</small></div></h3>
             <div class="slider">
-                <Slider v-model="state.value3" :step="1" :min="1" :max="10"/>
+                <div class="values">Not hurried at all</div>
+                <Slider style="vertical-align: middle;margin-left: 15px;display: inline-block;margin-right: 20px;" v-model="state.value3" :step="1" :min="0" :max="20"/>
+                <div class="values">Too rushed</div>
             </div>
-            <span><strong>{{state.value3}}</strong></span>
-            <h3>How successful were you in accomplishing what you were asked to do? <small>(1-10)</small></h3>
+            <h3>How successful were you in accomplishing what you were asked to do throughout the study? <div class="values"><small>{{state.value4}}</small></div></h3>
             <div class="slider">
-                <Slider v-model="state.value4" :step="1" :min="1" :max="10"/>
+                <div class="values">Perfect</div>
+                <Slider style="vertical-align: middle;margin-left: 57px;display: inline-block;margin-right: 25px;" v-model="state.value4" :step="1" :min="0" :max="20"/>
+                <div class="values">Failure</div>
             </div>
-            <span><strong>{{state.value4}}</strong></span>
-            <h3>How hard did you have to work to accomplish your level of performance? <small>(1-10)</small></h3>
+            <h3>How hard did you have to work to accomplish your level of performance throughout the study? <div class="values"><small>{{state.value5}}</small></div></h3>
             <div class="slider">
-                <Slider v-model="state.value5" :step="1" :min="1" :max="10"/>
+                <div class="values">Not hard at all</div>
+                <Slider style="vertical-align: middle;margin-left: 25px;display: inline-block;margin-right: 25px;" v-model="state.value5" :step="1" :min="0" :max="20"/>
+                <div class="values">Very hard</div>
             </div>
-            <span><strong>{{state.value5}}</strong></span>
-            <h3>How insecure, discouraged, irritated, stressed, and annoyed were you? <small>(1-10)</small></h3>
+            <h3>How insecure, discouraged, irritated, stressed, and annoyed were you throughout the study? <div class="values"><small>{{state.value6}}</small></div></h3>
             <div class="slider">
-                <Slider v-model="state.value6" :step="1" :min="1" :max="10"/>
+                <div class="values">Not at all</div>
+                <Slider style="vertical-align: middle;margin-left: 68px;display: inline-block;margin-right: 25px;" v-model="state.value6" :step="1" :min="0" :max="20"/>
+                <div class="values">Very much</div>
             </div>
-            <span><strong>{{state.value6}}</strong></span>
         </section>
         <br>
     </body>
@@ -65,12 +71,12 @@ export default {
         const userId = computed(() => route.params.userId)
 
         const state = reactive({
-            value1: 0,
-            value2: 0,
-            value3: 0,
-            value4: 0,
-            value5: 0,
-            value6: 0,
+            value1: null,
+            value2: null,
+            value3: null,
+            value4: null,
+            value5: null,
+            value6: null,
             nasaReplies: [],
             isDisabled: true,
             timer: null,
@@ -84,8 +90,8 @@ export default {
         })
 
         function enableNext() {
-            if (state.value1 != 0 && state.value2 != 0 && state.value3 != 0 && state.value4 != 0 && state.value5 != 0 && state.value6 != 0){
-                state.nasaReplies = [state.value1, state.value2, state.value3, state.value4, state.value5, state.value6]
+            if (state.value1 != null && state.value2 != null && state.value3 != null && state.value4 != null && state.value5 != null && state.value6 != null){
+                state.nasaReplies = [{"nasa1": state.value1}, {"nasa2": state.value2}, {"nasa3": state.value3}, {"nasa4": state.value4}, {"nasa5": state.value5}, {"nasa6": state.value6}]
                 stopTimer()
                 addDemographics()
                 router.push('/final')
@@ -145,8 +151,11 @@ export default {
     .slider {
         display: inline-block;
     }
-    span {
+    .values {
         color: #1E88E5;
-        margin-left: 15px;
+        display: inline-block;
+        // margin-left: 25px;
+        // margin-right: 25px;
+        // width: 60px;
     }
 </style>
