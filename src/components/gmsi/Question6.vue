@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>6/34. I listen attentively to music for _____ per day.</h4>
+        <h4>6/35. I listen attentively to music for _____ per day.</h4>
         <div v-for="option of state.minsOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

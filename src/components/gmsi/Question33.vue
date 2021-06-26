@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>33/34. "After hearing a new song two or three times, I can usually sing it by myself."</h4>
+        <h4>33/35. "After hearing a new song two or three times, I can usually sing it by myself."</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>19/34. I can play _ musical instruments</h4>
+        <h4>19/35. I can play _ musical instruments</h4>
         <div v-for="option of state.numOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

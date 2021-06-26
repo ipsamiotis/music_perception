@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h4>14/35. "I engaged in regular, daily practice of a musical instrument (including voice) for_ years."</h4>
-        <div v-for="option of state.numOptions" :key="option.key" class="p-field-radiobutton">
+        <h4>35/35. Do you have absolute pitch? Absolute or perfect pitch is the ability to recognise and name an isolated musical tone without a reference tone, e.g. being able to say 'F#' if someone plays that note on the piano.</h4>
+        <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>
         </div>
@@ -21,14 +21,9 @@
 
         setup(props){
             const state = reactive({
-                numOptions: [
-                    {name: '0', key: 1},
-                    {name: '1', key: 2},
-                    {name: '2', key: 3},
-                    {name: '3', key: 4},
-                    {name: '4-5', key: 5},
-                    {name: '6-9', key: 6},
-                    {name: '10 or more', key: 7},
+                agreeOptions: [
+                    {name: 'Yes', key: 1},
+                    {name: 'No', key: 2}
                 ],
                 value: {},
                 gmsiValue: {}
@@ -37,7 +32,7 @@
             watch(
             () => state.value, (value, prevalue) => {
                 if (value != prevalue) {
-                    state.gmsiValue["question14"] = value.name
+                    state.gmsiValue["question35"] = value.name
                     props.getAnswer(state.gmsiValue)
                 }
             })
@@ -50,7 +45,7 @@
 <style lang="scss" scoped>
     .p-field-radiobutton{
         // text-align: left;
-        margin-left: 300px;
+        margin-left: 600px;
     }
     // h4 {
     //     text-align: left;

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>22/34. I find it difficult to spot mistakes in a performance of a song even if I know the tune.</h4>
+        <h4>22/35. I find it difficult to spot mistakes in a performance of a song even if I know the tune.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>

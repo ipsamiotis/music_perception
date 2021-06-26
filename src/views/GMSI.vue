@@ -111,24 +111,15 @@
                 <div v-else-if="Object.keys(state.gmsiReplies).length === 33">
                     <Question34 :getAnswer="getAnswer"/>
                 </div>
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 34">
+                    <Question35 :getAnswer="getAnswer"/>
+                </div>
                 <div v-else>
                     <h4 style="text-align:center;">Thank you for your answers!</h4>
                     You just finished the first part of the study.
                     You can proceed now to the second part, the <strong>Music Skill Test</strong>!
                 </div>
                 </transition>
-
-                <!-- <div v-else-if="Object.keys(state.gmsiReplies).length === 34">
-                    <Question35 :getAnswer="getAnswer"/>
-                </div> -->
-                <!--
-                <h4>35. The instrument I play best (including voice) is:</h4>
-                <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
-                <h4>36. What age did you start to play an instrument?</h4>
-                <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
-                <h4>37. "Do you have absolute pitch? Absolute or perfect pitch is the ability to recognise and name an isolated musical tone without a reference tone, e.g. being able to say 'F#' if someone plays that note on the piano."</h4>
-                <SelectButton v-model="value3" :options="agreeOptions" optionLabel="name" />
-                -->
             </div>
         </section>
         <div id="next-button">
@@ -179,6 +170,7 @@ import Question31 from "@/components/gmsi/Question31"
 import Question32 from "@/components/gmsi/Question32"
 import Question33 from "@/components/gmsi/Question33"
 import Question34 from "@/components/gmsi/Question34"
+import Question35 from "@/components/gmsi/Question35"
 
 export default {
     components: {
@@ -217,6 +209,7 @@ export default {
         Question32,
         Question33,
         Question34,
+        Question35
     },
 
     setup(){
@@ -243,7 +236,7 @@ export default {
         }
 
         function enableNext() {
-            if (Object.keys(state.gmsiReplies).length == 34 ){
+            if (Object.keys(state.gmsiReplies).length == 35 ){
                 state.isDisabled = false
             }
         }
