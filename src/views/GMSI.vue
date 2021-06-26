@@ -46,110 +46,122 @@
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 9">
-                    <Question10 :getAnswer="getAnswer"/>
+                    <Attention1 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 10">
-                    <Question11 :getAnswer="getAnswer"/>
+                    <Question10 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 11">
-                    <Question12 :getAnswer="getAnswer"/>
+                    <Question11 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 12">
-                    <Question13 :getAnswer="getAnswer"/>
+                    <Question12 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 13">
-                    <Question14 :getAnswer="getAnswer"/>
+                    <Question13 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 14">
-                    <Question15 :getAnswer="getAnswer"/>
+                    <Question14 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 15">
-                    <Question16 :getAnswer="getAnswer"/>
+                    <Question15 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 16">
-                    <Question17 :getAnswer="getAnswer"/>
+                    <Question16 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 17">
-                    <Question18 :getAnswer="getAnswer"/>
+                    <Question17 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 18">
-                    <Question19 :getAnswer="getAnswer"/>
+                    <Attention2 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 19">
-                    <Question20 :getAnswer="getAnswer"/>
+                    <Question18 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 20">
-                    <Question21 :getAnswer="getAnswer"/>
+                    <Question19 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 21">
-                    <Question22 :getAnswer="getAnswer"/>
+                    <Question20 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 22">
-                    <Question23 :getAnswer="getAnswer"/>
+                    <Question21 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 23">
-                    <Question24 :getAnswer="getAnswer"/>
+                    <Question22 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 24">
-                    <Question25 :getAnswer="getAnswer"/>
+                    <Question23 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 25">
-                    <Question26 :getAnswer="getAnswer"/>
+                    <Question24 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 26">
-                    <Question27 :getAnswer="getAnswer"/>
+                    <Question25 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 27">
-                    <Question28 :getAnswer="getAnswer"/>
+                    <Question26 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 28">
-                    <Question29 :getAnswer="getAnswer"/>
+                    <Question27 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 29">
-                    <Question30 :getAnswer="getAnswer"/>
+                    <Question28 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 30">
-                    <Question31 :getAnswer="getAnswer"/>
+                    <Attention3 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 31">
-                    <Question32 :getAnswer="getAnswer"/>
+                    <Question29 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 32">
-                    <Question33 :getAnswer="getAnswer"/>
+                    <Question30 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 33">
-                    <Question34 :getAnswer="getAnswer"/>
+                    <Question31 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
                 <div v-else-if="state.questionToken === 34">
+                    <Question32 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
+                </div>
+                <div v-else-if="state.questionToken === 35">
+                    <Question33 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
+                </div>
+                <div v-else-if="state.questionToken === 36">
+                    <Question34 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
+                </div>
+                <div v-else-if="state.questionToken === 37">
                     <Question35 :getAnswer="getAnswer"/>
                     <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 35">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 38">
                     <h4 style="text-align:center;">Thank you for your answers!</h4>
                     You just finished the first part of the study.
                     You can proceed now to the second part, the <strong>Music Skill Test</strong>!
@@ -205,6 +217,9 @@ import Question32 from "@/components/gmsi/Question32"
 import Question33 from "@/components/gmsi/Question33"
 import Question34 from "@/components/gmsi/Question34"
 import Question35 from "@/components/gmsi/Question35"
+import Attention1 from "@/components/gmsi/Attention1"
+import Attention2 from "@/components/gmsi/Attention2"
+import Attention3 from "@/components/gmsi/Attention3"
 
 export default {
     components: {
@@ -243,7 +258,10 @@ export default {
         Question32,
         Question33,
         Question34,
-        Question35
+        Question35,
+        Attention1,
+        Attention2,
+        Attention3
     },
 
     setup(){
