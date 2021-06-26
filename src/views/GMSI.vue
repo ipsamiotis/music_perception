@@ -9,122 +9,159 @@
             <h3>Please select the most appropriate category for following questions:</h3>
             <div class="radioOptions">
                 <transition name="slide-fade" mode="out-in">
-                <div v-if="Object.keys(state.gmsiReplies).length === 0">
+                <div v-if="state.questionToken === 0">
                     <Question1 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 1">
+                <div v-else-if="state.questionToken === 1">
                     <Question2 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 2">
+                <div v-else-if="state.questionToken === 2">
                     <Question3 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 3">
+                <div v-else-if="state.questionToken === 3">
                     <Question4 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 4">
+                <div v-else-if="state.questionToken === 4">
                     <Question5 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 5">
+                <div v-else-if="state.questionToken === 5">
                     <Question6 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 6">
+                <div v-else-if="state.questionToken === 6">
                     <Question7 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 7">
+                <div v-else-if="state.questionToken === 7">
                     <Question8 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 8">
+                <div v-else-if="state.questionToken === 8">
                     <Question9 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 9">
+                <div v-else-if="state.questionToken === 9">
                     <Question10 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 10">
+                <div v-else-if="state.questionToken === 10">
                     <Question11 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 11">
+                <div v-else-if="state.questionToken === 11">
                     <Question12 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 12">
+                <div v-else-if="state.questionToken === 12">
                     <Question13 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 13">
+                <div v-else-if="state.questionToken === 13">
                     <Question14 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 14">
+                <div v-else-if="state.questionToken === 14">
                     <Question15 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 15">
+                <div v-else-if="state.questionToken === 15">
                     <Question16 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 16">
+                <div v-else-if="state.questionToken === 16">
                     <Question17 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 17">
+                <div v-else-if="state.questionToken === 17">
                     <Question18 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 18">
+                <div v-else-if="state.questionToken === 18">
                     <Question19 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 19">
+                <div v-else-if="state.questionToken === 19">
                     <Question20 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 20">
+                <div v-else-if="state.questionToken === 20">
                     <Question21 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 21">
+                <div v-else-if="state.questionToken === 21">
                     <Question22 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 22">
+                <div v-else-if="state.questionToken === 22">
                     <Question23 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 23">
+                <div v-else-if="state.questionToken === 23">
                     <Question24 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 24">
+                <div v-else-if="state.questionToken === 24">
                     <Question25 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 25">
+                <div v-else-if="state.questionToken === 25">
                     <Question26 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 26">
+                <div v-else-if="state.questionToken === 26">
                     <Question27 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 27">
+                <div v-else-if="state.questionToken === 27">
                     <Question28 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 28">
+                <div v-else-if="state.questionToken === 28">
                     <Question29 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 29">
+                <div v-else-if="state.questionToken === 29">
                     <Question30 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 30">
+                <div v-else-if="state.questionToken === 30">
                     <Question31 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 31">
+                <div v-else-if="state.questionToken === 31">
                     <Question32 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 32">
+                <div v-else-if="state.questionToken === 32">
                     <Question33 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 33">
+                <div v-else-if="state.questionToken === 33">
                     <Question34 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else-if="Object.keys(state.gmsiReplies).length === 34">
+                <div v-else-if="state.questionToken === 34">
                     <Question35 :getAnswer="getAnswer"/>
+                    <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/>
                 </div>
-                <div v-else>
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 35">
                     <h4 style="text-align:center;">Thank you for your answers!</h4>
                     You just finished the first part of the study.
                     You can proceed now to the second part, the <strong>Music Skill Test</strong>!
+                    <br>
+                    <Button label="Proceed" @click="stopTimer();addDemographics();$router.push({ name: 'PROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
                 </div>
                 </transition>
             </div>
+            <div id="navigation">
+                <!-- <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/> -->
+            </div>
         </section>
-        <div id="next-button">
-                <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'PROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
-        </div>
     </body>
 </template>
 
@@ -218,6 +255,9 @@ export default {
 
         const state = reactive({
             isDisabled : true,
+            backDisabled: true,
+            nextDisabled: true,
+            questionToken: 0,
             gmsiReplies: {},
             timer: null,
             reactionTime: 0 // in ms
@@ -232,12 +272,29 @@ export default {
         async function getAnswer(answer){
             await sleep(200)
             Object.assign(state.gmsiReplies, answer)
+            state.questionToken += 1
             enableNext()
         }
 
         function enableNext() {
+            if (state.questionToken == Object.keys(state.gmsiReplies).length) {
+                state.backDisabled = false
+            }
             if (Object.keys(state.gmsiReplies).length == 35 ){
+                state.backDisabled = true
                 state.isDisabled = false
+            }
+        }
+
+        function nextQuestion() {
+            if (state.questionToken < 34) {
+                state.questionToken += 1
+            }
+        }
+
+        function prevQuestion() {
+            if (state.questionToken > 0) {
+                state.questionToken -= 1
             }
         }
 
@@ -263,7 +320,7 @@ export default {
             }, {headers});
         }
 
-        return { state, getAnswer, enableNext, sleep, addDemographics, startTimer, stopTimer, userId}
+        return { state, getAnswer, nextQuestion, prevQuestion, enableNext, sleep, addDemographics, startTimer, stopTimer, userId}
     }
 }
 
