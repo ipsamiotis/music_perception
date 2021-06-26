@@ -25,6 +25,12 @@
                 <Slider style="vertical-align: middle;margin-left: 15px;display: inline-block;margin-right: 20px;" v-model="state.value3" :step="1" :min="0" :max="20"/>
                 <div class="values">Too rushed</div>
             </div>
+            <h3>Please select "15" on the slider <div class="values"><small>{{state.attention}}</small></div></h3>
+            <div class="slider">
+                <div class="values">Small value</div>
+                <Slider style="vertical-align: middle;margin-left: 15px;display: inline-block;margin-right: 20px;" v-model="state.attention" :step="1" :min="0" :max="20"/>
+                <div class="values">Large value</div>
+            </div>
             <h3>How successful were you in accomplishing what you were asked to do throughout the study? <div class="values"><small>{{state.value4}}</small></div></h3>
             <div class="slider">
                 <div class="values">Perfect</div>
@@ -77,6 +83,7 @@ export default {
             value4: null,
             value5: null,
             value6: null,
+            attention: null,
             nasaReplies: {},
             isDisabled: true,
             timer: null,
@@ -90,13 +97,14 @@ export default {
         })
 
         function enableNext() {
-            if (state.value1 != null && state.value2 != null && state.value3 != null && state.value4 != null && state.value5 != null && state.value6 != null){
+            if (state.value1 != null && state.value2 != null && state.value3 != null && state.value4 != null && state.value5 != null && state.value6 != null && state.attention != null){
                 state.nasaReplies["mentally"] = state.value1
                 state.nasaReplies["physically"] = state.value2
                 state.nasaReplies["rushed"] = state.value3
                 state.nasaReplies["successful"] = state.value4
                 state.nasaReplies["hard"] = state.value5
                 state.nasaReplies["insecure"] = state.value6
+                state.nasaReplies["attention"] = state.attention
                 stopTimer()
                 addDemographics()
                 router.push({ name: 'Feedback', params: { userId: userId.value } })
