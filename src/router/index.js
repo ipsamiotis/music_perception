@@ -37,6 +37,11 @@ const routes = [
         component: () => import('@/views/NASA.vue')
     },
     {
+        path: '/feedback/:userId',
+        name: 'Feedback',
+        component: () => import('@/views/Feedback.vue')
+    },
+    {
         path: '/final',
         name: 'Final',
         component: () => import('@/views/Final.vue')
