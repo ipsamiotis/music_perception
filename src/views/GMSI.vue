@@ -294,7 +294,7 @@ export default {
             if (state.questionToken == Object.keys(state.gmsiReplies).length) {
                 state.backDisabled = false
             }
-            if (Object.keys(state.gmsiReplies).length == 35 ){
+            if (Object.keys(state.gmsiReplies).length == 38 ){
                 state.backDisabled = true
                 state.isDisabled = false
             }
