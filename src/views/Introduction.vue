@@ -44,7 +44,7 @@ export default {
     setup () {
         const state = reactive({
             userId: '',
-            introduction: [],
+            introduction: {},
             timer: null,
             reactionTime: 0 // in ms
         })
@@ -64,7 +64,7 @@ export default {
 
         function stopTimer() {
             clearInterval(state.timer)
-            state.introduction.push({"time_spent": state.reactionTime})
+            state.introduction["time_spent"] = state.reactionTime
         }
 
         async function addDemographics() {

@@ -77,7 +77,7 @@ export default {
             value4: null,
             value5: null,
             value6: null,
-            nasaReplies: [],
+            nasaReplies: {},
             isDisabled: true,
             timer: null,
             reactionTime: 0 // in ms
@@ -91,7 +91,13 @@ export default {
 
         function enableNext() {
             if (state.value1 != null && state.value2 != null && state.value3 != null && state.value4 != null && state.value5 != null && state.value6 != null){
-                state.nasaReplies = [{"nasa1": state.value1}, {"nasa2": state.value2}, {"nasa3": state.value3}, {"nasa4": state.value4}, {"nasa5": state.value5}, {"nasa6": state.value6}]
+                // state.nasaReplies = [{"nasa1": state.value1}, {"nasa2": state.value2}, {"nasa3": state.value3}, {"nasa4": state.value4}, {"nasa5": state.value5}, {"nasa6": state.value6}]
+                state.nasaReplies["mentally"] = state.value1
+                state.nasaReplies["physically"] = state.value2
+                state.nasaReplies["rushed"] = state.value3
+                state.nasaReplies["successful"] = state.value4
+                state.nasaReplies["hard"] = state.value5
+                state.nasaReplies["insecure"] = state.value6
                 stopTimer()
                 addDemographics()
                 router.push('/final')
@@ -108,7 +114,7 @@ export default {
 
         function stopTimer() {
             clearInterval(state.timer)
-            state.nasaReplies.push({"time_spent": state.reactionTime})
+            state.nasaReplies["time_spent"] = state.reactionTime
         }
 
         async function addDemographics() {
