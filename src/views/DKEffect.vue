@@ -65,7 +65,7 @@ export default {
             value3: null,
             value4: null,
             value5: null,
-            dkReplies: [],
+            dkReplies: {},
             isDisabled: true,
             timer: null,
             reactionTime: 0 // in ms
@@ -79,7 +79,11 @@ export default {
 
         function enableNext() {
             if (state.value2 != null && state.value3 != null && state.value4 != null && state.value5 != null){
-                state.dkReplies = [state.value2, state.value3, state.value4, state.value5]
+                // state.dkReplies = [state.value2, state.value3, state.value4, state.value5]
+                state.dkReplies["melody_self"] = state.value2
+                state.dkReplies["tuning_self"] = state.value3
+                state.dkReplies["accent_self"] = state.value4
+                state.dkReplies["speed_self"] = state.value5
                 stopTimer()
                 addDemographics()
                 router.push({ name: 'Equipment', params: { userId: userId.value } })
@@ -96,7 +100,7 @@ export default {
 
         function stopTimer() {
             clearInterval(state.timer)
-            state.dkReplies.push({"time_spent": state.reactionTime})
+            state.dkReplies["time_spent"] = state.reactionTime
         }
 
         async function addDemographics() {

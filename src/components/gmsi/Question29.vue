@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>29/34. I can sing or play music from memory.</h4>
+        <h4>29/35. I can sing or play music from memory.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>
@@ -30,17 +30,15 @@
                     {name: 'Strongly Agree', key: 6},
                     {name: 'Completely Agree', key: 7},
                 ],
-                value: {}
+                value: {},
+                gmsiValue: {}
             })
 
             watch(
             () => state.value, (value, prevalue) => {
                 if (value != prevalue) {
-                    value.question = "question29"
-                    if (prevalue != '') {
-                        prevalue.question = "question29"
-                    }
-                    props.getAnswer(value, prevalue)
+                    state.gmsiValue["question29"] = value.name
+                    props.getAnswer(state.gmsiValue)
                 }
             })
 

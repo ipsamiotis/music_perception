@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h4>24/34. I have trouble recognizing a familiar song when played in a different way or by a different performer.</h4>
+        <h4>24/35. I have trouble recognizing a familiar song when played in a different way or by a different performer.</h4>
         <div v-for="option of state.agreeOptions" :key="option.key" class="p-field-radiobutton">
             <RadioButton :id="option.key" name="option" :value="option" v-model="state.value"/>
             <label :for="option.key">{{option.name}}</label>
@@ -30,17 +30,15 @@
                     {name: 'Strongly Agree', key: 6},
                     {name: 'Completely Agree', key: 7},
                 ],
-                value: {}
+                value: {},
+                gmsiValue: {}
             })
 
             watch(
             () => state.value, (value, prevalue) => {
                 if (value != prevalue) {
-                    value.question = "question24"
-                    if (prevalue != '') {
-                        prevalue.question = "question24"
-                    }
-                    props.getAnswer(value, prevalue)
+                    state.gmsiValue["question24"] = value.name
+                    props.getAnswer(state.gmsiValue)
                 }
             })
 

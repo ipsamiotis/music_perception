@@ -128,7 +128,7 @@ export default {
                 '"Cannot be heard by someone 1 metre (~3 feet) away, even when shouting. Volume level may be uncomfortable after a short time"'
             ],
             isDisabled : true,
-            equipReplies: [],
+            equipReplies: {},
             timer: null,
             reactionTime: 0 // in ms
         })
@@ -144,47 +144,26 @@ export default {
             ([equipment, condition, impairment, noise], [preequipment, precondition, preimpairment, prenoise]) => {
 
                 if (equipment != preequipment) {
-                    if (state.equipReplies.indexOf(preequipment) != -1) {
-                        replaceReply(equipment, state.equipReplies.indexOf(preequipment))
-                    } else {
-                        addReply(equipment)
-                    }
+                    state.equipReplies["type"] = equipment
+                    enableNext()
                 }
                 if (impairment != preimpairment) {
-                    if (state.equipReplies.indexOf(preimpairment) != -1) {
-                        replaceReply(impairment, state.equipReplies.indexOf(preimpairment))
-                    } else {
-                        addReply(impairment)
-                    }
+                    state.equipReplies["impairment"] = impairment
+                    enableNext()
                 }
                 if (condition != precondition) {
-                    if (state.equipReplies.indexOf(precondition) != -1) {
-                        replaceReply(condition, state.equipReplies.indexOf(precondition))
-                    } else {
-                        addReply(condition)
-                    }
+                    state.equipReplies["condition"] = condition
+                    enableNext()
                 }
                 if (noise != prenoise) {
-                    if (state.equipReplies.indexOf(prenoise) != -1){
-                        replaceReply(noise, state.equipReplies.indexOf(prenoise))
-                    } else {
-                        addReply(noise)
-                    }
+                    state.equipReplies["env_noise"] = noise
+                    enableNext()
                 }
             }
         )
-function addReply(reply) {
-            state.equipReplies.push(reply)
-            enableNext()
-        }
-
-        function replaceReply(reply, index) {
-            state.equipReplies.splice(index, 1, reply)
-            enableNext()
-        }
 
         function enableNext() {
-            if (state.equipReplies.length == 4 ){
+            if (Object.keys(state.equipReplies).length == 4 ){
                 state.isDisabled = false
             }
         }
@@ -197,7 +176,7 @@ function addReply(reply) {
 
         function stopTimer() {
             clearInterval(state.timer)
-            state.equipReplies.push({"time_spent": state.reactionTime})
+            state.equipReplies["time_spent"] = state.reactionTime
         }
 
         async function addDemographics() {
@@ -207,7 +186,7 @@ function addReply(reply) {
             }, {headers});
         }
 
-        return {state, enableNext, addReply, addDemographics, startTimer, stopTimer, userId}
+        return {state, enableNext, addDemographics, startTimer, stopTimer, userId}
     }
 }
 </script>

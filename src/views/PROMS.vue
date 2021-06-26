@@ -52,7 +52,7 @@ export default {
 
         const state = reactive({
             isDisabled : true,
-            promsReplies: [],
+            promsReplies: {},
             token: '',
             timer: null,
             reactionTime: 0 // in ms
@@ -113,7 +113,7 @@ export default {
 
         function stopTimer() {
             clearInterval(state.timer)
-            state.promsReplies.push({"time_spent": state.reactionTime})
+            state.promsReplies["time_spent"] = state.reactionTime
         }
 
         async function addDemographics() {

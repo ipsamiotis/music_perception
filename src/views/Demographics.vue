@@ -131,7 +131,7 @@ export default {
             age : '',
             education : '',
             isDisabled : true,
-            demoReplies: [],
+            demoReplies: {},
             timer: null,
             reactionTime: 0 // in ms
         })
@@ -147,41 +147,22 @@ export default {
             ([occupation, age, education], [preoccupation, preage, preeducation]) => {
 
                 if (occupation != preoccupation) {
-                    if (state.demoReplies.indexOf(preoccupation) != -1) {
-                        replaceReply(occupation, state.demoReplies.indexOf(preoccupation))
-                    } else {
-                        addReply(occupation)
-                    }
+                    state.demoReplies["occupation"] = occupation
+                    enableNext()
                 }
                 if (education != preeducation) {
-                    if (state.demoReplies.indexOf(preeducation) != -1) {
-                        replaceReply(education, state.demoReplies.indexOf(preeducation))
-                    } else {
-                        addReply(education)
-                    }
+                    state.demoReplies["education"] = education
+                    enableNext()
                 }
                 if (age != preage) {
-                    if (state.demoReplies.indexOf(preage) != -1) {
-                        replaceReply(age, state.demoReplies.indexOf(preage))
-                    } else {
-                        addReply(age)
-                    }
+                    state.demoReplies["age"] = age
+                    enableNext()
                 }
             }
         )
 
-        function addReply(reply) {
-            state.demoReplies.push(reply)
-            enableNext()
-        }
-
-        function replaceReply(reply, index) {
-            state.demoReplies.splice(index, 1, reply)
-            enableNext()
-        }
-
         function enableNext() {
-            if (state.demoReplies.length == 3 ){
+            if (Object.keys(state.demoReplies).length == 3 ){
                 state.isDisabled = false
             }
         }
@@ -194,7 +175,7 @@ export default {
 
         function stopTimer() {
             clearInterval(state.timer)
-            state.demoReplies.push({"time_spent": state.reactionTime})
+            state.demoReplies["time_spent"] = state.reactionTime
         }
 
         async function addDemographics() {
@@ -204,7 +185,7 @@ export default {
             }, {headers});
         }
 
-        return {state, enableNext, addReply, addDemographics, startTimer, stopTimer, userId}
+        return {state, enableNext, addDemographics, startTimer, stopTimer, userId}
     }
 }
 
