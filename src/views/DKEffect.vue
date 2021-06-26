@@ -6,7 +6,7 @@
             </div>
         </header>
         <section>
-            <h2>Please indicate how well you believe you performed during the previous skill test</h2>
+            <h3>Please indicate how well you believe you performed during the previous skill test</h3>
             <br>
             <!-- <h4>How many of the <strong>total</strong> number of skill tests you believe you answered correctly? <small>(0-36)</small></h4>
             <div class="slider">

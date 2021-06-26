@@ -23,7 +23,7 @@
             <div id="continue-token">
                 Enter <strong>task token</strong> here:
                 <InputText id="continueToken" type="text" v-model="state.token"/>
-                <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'DKEffect', params: { userId: userId } })" :disabled="state.isDisabled"/>
+                <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'AfterPROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
             </div>
             <!-- <a href="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en">Access Music Skill Test here!</a> -->
             <!-- <iframe src="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en" width="100%"

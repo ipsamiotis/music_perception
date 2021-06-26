@@ -27,6 +27,11 @@ const routes = [
         component: () => import('@/views/PROMS.vue')
     },
     {
+        path: '/progress/:userId',
+        name: 'AfterPROMS',
+        component: () => import('@/views/AfterPROMS.vue')
+    },
+    {
         path: '/dkeffect/:userId',
         name: 'DKEffect',
         component: () => import('@/views/DKEffect.vue')
@@ -35,6 +40,11 @@ const routes = [
         path: '/nasa/:userId',
         name: 'NASA',
         component: () => import('@/views/NASA.vue')
+    },
+    {
+        path: '/feedback/:userId',
+        name: 'Feedback',
+        component: () => import('@/views/Feedback.vue')
     },
     {
         path: '/final',

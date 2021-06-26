@@ -91,7 +91,6 @@ export default {
 
         function enableNext() {
             if (state.value1 != null && state.value2 != null && state.value3 != null && state.value4 != null && state.value5 != null && state.value6 != null){
-                // state.nasaReplies = [{"nasa1": state.value1}, {"nasa2": state.value2}, {"nasa3": state.value3}, {"nasa4": state.value4}, {"nasa5": state.value5}, {"nasa6": state.value6}]
                 state.nasaReplies["mentally"] = state.value1
                 state.nasaReplies["physically"] = state.value2
                 state.nasaReplies["rushed"] = state.value3
@@ -100,7 +99,7 @@ export default {
                 state.nasaReplies["insecure"] = state.value6
                 stopTimer()
                 addDemographics()
-                router.push('/final')
+                router.push({ name: 'Feedback', params: { userId: userId.value } })
             } else {
                 alert("Please reply to all questions first")
             }
@@ -124,7 +123,7 @@ export default {
             }, {headers})
         }
 
-        return {state, enableNext, addDemographics, startTimer, stopTimer}
+        return {state, enableNext, addDemographics, startTimer, stopTimer, userId}
     }
 
 }
