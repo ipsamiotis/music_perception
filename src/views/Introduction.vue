@@ -20,6 +20,12 @@
                 <!-- <h1>WORKER ID</h1> -->
                 <!-- You will be asked in certain cases, to use a <strong>token</strong> in order to proceed to the next page. -->
                 Make sure you follow the instructions on the tasks, to navigate successfully.
+                <br>
+                <br>
+                <strong style="color: red">IMPORTANT:</strong> Please don't make use of your browser's nagivation buttons ("back", "next"), as your progress will be lost and you will be navigated back to this page.
+                <br>
+                <br>
+                Regarding Privacy: <b><u>This is an anonymous survey.</u></b> Please do not self-identify yourself as responses may be shared publicly. This survey complies with the GDPR (General Data Protection Regulation).
             </div>
             <div style="text-align: center">
                 <br>
