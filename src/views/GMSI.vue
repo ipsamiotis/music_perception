@@ -158,9 +158,6 @@
                 </div>
                 </transition>
             </div>
-            <div id="navigation">
-                <!-- <Button style="margin-right: 30px" label="Back" @click="prevQuestion()" :disabled="state.backDisabled"/> -->
-            </div>
         </section>
     </body>
 </template>
@@ -256,7 +253,6 @@ export default {
         const state = reactive({
             isDisabled : true,
             backDisabled: true,
-            nextDisabled: true,
             questionToken: 0,
             gmsiReplies: {},
             timer: null,
@@ -286,15 +282,12 @@ export default {
             }
         }
 
-        function nextQuestion() {
-            if (state.questionToken < 34) {
-                state.questionToken += 1
-            }
-        }
-
         function prevQuestion() {
             if (state.questionToken > 0) {
                 state.questionToken -= 1
+            }
+            if (state.questionToken == 0) {
+                state.backDisabled = true
             }
         }
 
@@ -320,7 +313,7 @@ export default {
             }, {headers});
         }
 
-        return { state, getAnswer, nextQuestion, prevQuestion, enableNext, sleep, addDemographics, startTimer, stopTimer, userId}
+        return { state, getAnswer, prevQuestion, enableNext, sleep, addDemographics, startTimer, stopTimer, userId}
     }
 }
 
