@@ -30,17 +30,15 @@
                     {name: '3-4', key: 6},
                     {name: '5 or more', key: 7},
                 ],
-                value: {}
+                value: {},
+                gmsiValue: {}
             })
 
             watch(
             () => state.value, (value, prevalue) => {
                 if (value != prevalue) {
-                    value.question = "question15"
-                    if (prevalue != '') {
-                        prevalue.question = "question15"
-                    }
-                    props.getAnswer(value, prevalue)
+                    state.gmsiValue["question15"] = value.name
+                    props.getAnswer(state.gmsiValue)
                 }
             })
 

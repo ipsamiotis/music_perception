@@ -9,106 +9,106 @@
             <h3>Please select the most appropriate category for following questions:</h3>
             <div class="radioOptions">
                 <transition name="slide-fade" mode="out-in">
-                <div v-if="state.gmsiReplies.length === 0">
+                <div v-if="Object.keys(state.gmsiReplies).length === 0">
                     <Question1 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 1">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 1">
                     <Question2 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 2">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 2">
                     <Question3 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 3">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 3">
                     <Question4 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 4">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 4">
                     <Question5 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 5">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 5">
                     <Question6 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 6">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 6">
                     <Question7 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 7">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 7">
                     <Question8 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 8">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 8">
                     <Question9 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 9">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 9">
                     <Question10 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 10">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 10">
                     <Question11 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 11">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 11">
                     <Question12 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 12">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 12">
                     <Question13 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 13">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 13">
                     <Question14 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 14">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 14">
                     <Question15 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 15">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 15">
                     <Question16 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 16">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 16">
                     <Question17 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 17">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 17">
                     <Question18 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 18">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 18">
                     <Question19 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 19">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 19">
                     <Question20 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 20">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 20">
                     <Question21 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 21">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 21">
                     <Question22 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 22">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 22">
                     <Question23 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 23">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 23">
                     <Question24 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 24">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 24">
                     <Question25 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 25">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 25">
                     <Question26 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 26">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 26">
                     <Question27 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 27">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 27">
                     <Question28 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 28">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 28">
                     <Question29 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 29">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 29">
                     <Question30 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 30">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 30">
                     <Question31 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 31">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 31">
                     <Question32 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 32">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 32">
                     <Question33 :getAnswer="getAnswer"/>
                 </div>
-                <div v-else-if="state.gmsiReplies.length === 33">
+                <div v-else-if="Object.keys(state.gmsiReplies).length === 33">
                     <Question34 :getAnswer="getAnswer"/>
                 </div>
                 <div v-else>
@@ -118,7 +118,7 @@
                 </div>
                 </transition>
 
-                <!-- <div v-else-if="state.gmsiReplies.length === 34">
+                <!-- <div v-else-if="Object.keys(state.gmsiReplies).length === 34">
                     <Question35 :getAnswer="getAnswer"/>
                 </div> -->
                 <!--
@@ -225,7 +225,7 @@ export default {
 
         const state = reactive({
             isDisabled : true,
-            gmsiReplies: [],
+            gmsiReplies: {},
             timer: null,
             reactionTime: 0 // in ms
         })
@@ -236,28 +236,14 @@ export default {
             })
         })
 
-        async function getAnswer(answer, prevAnswer){
-            if (state.gmsiReplies.indexOf(prevAnswer) != -1) {
-                await sleep(200)
-                replaceReply(answer, state.gmsiReplies.indexOf(prevAnswer))
-            } else {
-                await sleep(200)
-                addReply(answer)
-            }
-        }
-
-        function addReply(reply) {
-            state.gmsiReplies.push(reply)
-            enableNext()
-        }
-
-        function replaceReply(reply, index) {
-            state.gmsiReplies.splice(index, 1, reply)
+        async function getAnswer(answer){
+            await sleep(200)
+            Object.assign(state.gmsiReplies, answer)
             enableNext()
         }
 
         function enableNext() {
-            if (state.gmsiReplies.length == 34 ){
+            if (Object.keys(state.gmsiReplies).length == 34 ){
                 state.isDisabled = false
             }
         }
@@ -274,7 +260,7 @@ export default {
 
         function stopTimer() {
             clearInterval(state.timer)
-            state.gmsiReplies.push({"time_spent": state.reactionTime})
+            state.gmsiReplies["time_spent"] = state.reactionTime
         }
 
         async function addDemographics() {
@@ -284,7 +270,7 @@ export default {
             }, {headers});
         }
 
-        return { state, getAnswer, addReply, replaceReply, enableNext, sleep, addDemographics, startTimer, stopTimer, userId}
+        return { state, getAnswer, enableNext, sleep, addDemographics, startTimer, stopTimer, userId}
     }
 }
 

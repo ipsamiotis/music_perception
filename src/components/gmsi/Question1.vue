@@ -30,17 +30,15 @@
                     {name: 'Strongly Agree', key: 6},
                     {name: 'Completely Agree', key: 7},
                 ],
-                value: {}
+                value: {},
+                gmsiValue: {}
             })
 
             watch(
             () => state.value, (value, prevalue) => {
                 if (value != prevalue) {
-                    value.question = "question1"
-                    if (prevalue != '') {
-                        prevalue.question = "question1"
-                    }
-                    props.getAnswer(value, prevalue)
+                    state.gmsiValue["question1"] = value.name
+                    props.getAnswer(state.gmsiValue)
                 }
             })
 
