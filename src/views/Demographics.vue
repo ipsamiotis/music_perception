@@ -102,7 +102,7 @@
             </div>
         </section>
         <div id="next-button">
-            <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'GMSI', params: { userId: userId } })" :disabled="state.isDisabled"/>
+            <Button label="Proceed" @click="stopTimer();addDemographics();$router.push({ name: 'GMSI', params: { userId: userId } })" :disabled="state.isDisabled"/>
         </div>
     </body>
 </template>

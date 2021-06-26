@@ -90,7 +90,7 @@
         <br>
         <!-- <br> -->
         <div style="margin-bottom: 30px;" id="next-button">
-            <Button label="Next" @click="stopTimer();addDemographics();$router.push({ name: 'NASA', params: { userId: userId } })" :disabled="state.isDisabled"/>
+            <Button label="Proceed" @click="stopTimer();addDemographics();$router.push({ name: 'NASA', params: { userId: userId } })" :disabled="state.isDisabled"/>
         </div>
     </body>
 </template>
