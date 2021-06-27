@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
     {
-        path: '/',
+        path: '/:userId',
         name: 'Introduction',
         component: () => import('@/views/Introduction.vue')
     },
@@ -55,7 +55,7 @@ const routes = [
 
 const router = createRouter({
     // base: "/music_perception/",
-    history: createWebHashHistory('/music_perception/'),
+    history: createWebHashHistory(),
     routes
 })
 
