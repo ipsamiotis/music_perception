@@ -54,8 +54,8 @@ const routes = [
 ]
 
 const router = createRouter({
-    base: "/music_perception/",
-    history: createWebHistory(),
+    // base: "/music_perception/",
+    history: createWebHistory('/music_perception/'),
     routes
 })
 
