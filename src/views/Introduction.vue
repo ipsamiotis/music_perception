@@ -17,12 +17,10 @@
                     <li>Finally, you will be asked to fill in a <strong>post-test survey</strong> (~3mins).</li>
                 </ul>
                 <br>
-                <!-- <h1>WORKER ID</h1> -->
-                <!-- You will be asked in certain cases, to use a <strong>token</strong> in order to proceed to the next page. -->
                 Make sure you follow the instructions on the tasks, to navigate successfully.
                 <br>
                 <br>
-                <strong style="color: red">IMPORTANT:</strong> Please don't make use of your browser's nagivation buttons ("back", "next"), as your progress will be lost and you will be navigated back to this page.
+                <strong style="color: red">IMPORTANT:</strong> Please only use <strong>Mozilla Firefox</strong> or <strong>Chrome</strong> for this study.
                 <br>
                 <br>
                 Regarding Privacy: <b><u>This is an anonymous survey.</u></b> Please do not self-identify yourself as responses may be shared publicly. This survey complies with the GDPR (General Data Protection Regulation).
@@ -30,14 +28,21 @@
             <div style="text-align: center">
                 <br>
                 <br>
-                <Button label="Begin" @click="stopTimer();addDemographics();$router.push({ name: 'Demographics', params: { userId: state.userId } })"/>
+                <div v-if="(state.isFirefox) || (state.isChrome)">
+                    <Button label="Begin" @click="stopTimer();addDemographics();$router.push({ name: 'Demographics', params: { userId: userId } })"/>
+                </div>
+                <div v-else>
+                    Please use Mozilla Firefox or Chrome in this study
+                </div>
             </div>
         </section>
     </body>
 </template>
 
 <script>
-import { reactive, onMounted } from 'vue'
+import { reactive, computed, onMounted } from 'vue'
+
+import {useRoute} from 'vue-router'
 
 import Button from 'primevue/button'
 
@@ -48,10 +53,14 @@ export default {
         Button
     },
     setup () {
+        const route = useRoute();
+        const userId = computed(() => route.params.userId);
+
         const state = reactive({
-            userId: '',
             introduction: {},
             timer: null,
+            isFirefox: '',
+            isChrome: '',
             reactionTime: 0 // in ms
         })
 
@@ -65,7 +74,15 @@ export default {
             state.timer = setInterval(()=>{
                 state.reactionTime += 10
             }, 10)
-            state.userId = makeid(6)
+            // state.userId = makeid(6)
+            checkBrowser()
+        }
+
+        function checkBrowser() {
+            // Firefox 1.0+
+            state.isFirefox = typeof InstallTrigger !== 'undefined';
+            // Chrome 1 - 79
+            state.isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
         }
 
         function stopTimer() {
@@ -75,28 +92,28 @@ export default {
 
         async function addDemographics() {
             await axios.post(`http://localhost:3000/crowd-results/`, {
-                id: state.userId,
+                id: userId.value,
                 introduction: state.introduction,
             });
         }
 
-        function makeid(length) {
-            var result           = '';
-            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            var charactersLength = characters.length;
-            for ( var i = 0; i < length; i++ ) {
-            result += characters.charAt(Math.floor(Math.random() *
-        charactersLength));
-        }
-            return result;
-        }
+        // function makeid(length) {
+        //     var result           = '';
+        //     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        //     var charactersLength = characters.length;
+        //     for ( var i = 0; i < length; i++ ) {
+        //     result += characters.charAt(Math.floor(Math.random() *
+        // charactersLength));
+        // }
+        //     return result;
+        // }
 
         return {
             state,
             startTimer,
             stopTimer,
             addDemographics,
-            makeid
+            userId
         }
     }
 }
