@@ -52,14 +52,16 @@
         </section>
         <br>
     </body>
-    <Button icon="pi pi-check" label="Submit" @click="enableNext()" class="p-button-success" />
+    <Button label="Proceed" @click="submitAnswers()" :disabled="state.isDisabled"/>
 </template>
 
 <script>
-import { onMounted, reactive, computed } from 'vue';
+import { onMounted, reactive, computed, watch } from 'vue';
 
 import {useRoute} from 'vue-router'
+
 import router from '@/router/index.js'
+
 
 import Slider from 'primevue/slider';
 import Button from 'primevue/button';
@@ -96,21 +98,50 @@ export default {
             })
         })
 
+        watch(
+            () => [state.value1, state.value2, state.value3, state.value4, state.value5, state.value6, state.attention],
+            ([value1, value2, value3, value4, value5, value6, attention], [prevalue1, prevalue2, prevalue3, prevalue4, prevalue5, prevalue6, preattention]) => {
+                if (value1 != prevalue1){
+                    enableNext()
+                }
+                if (value2 != prevalue2){
+                    enableNext()
+                }
+                if (value3 != prevalue3){
+                    enableNext()
+                }
+                if (value4 != prevalue4){
+                    enableNext()
+                }
+                if (value5 != prevalue5){
+                    enableNext()
+                }
+                if (value6 != prevalue6){
+                    enableNext()
+                }
+                if (attention != preattention){
+                    enableNext()
+                }
+            }
+        )
+
         function enableNext() {
             if (state.value1 != null && state.value2 != null && state.value3 != null && state.value4 != null && state.value5 != null && state.value6 != null && state.attention != null){
-                state.nasaReplies["mentally"] = state.value1
-                state.nasaReplies["physically"] = state.value2
-                state.nasaReplies["rushed"] = state.value3
-                state.nasaReplies["successful"] = state.value4
-                state.nasaReplies["hard"] = state.value5
-                state.nasaReplies["insecure"] = state.value6
-                state.nasaReplies["attention"] = state.attention
-                stopTimer()
-                addDemographics()
-                router.push({ name: 'Feedback', params: { userId: userId.value } })
-            } else {
-                alert("Please reply to all questions first")
+                state.isDisabled = false
             }
+        }
+
+        function submitAnswers() {
+            state.nasaReplies["mentally"] = state.value1
+            state.nasaReplies["physically"] = state.value2
+            state.nasaReplies["rushed"] = state.value3
+            state.nasaReplies["successful"] = state.value4
+            state.nasaReplies["hard"] = state.value5
+            state.nasaReplies["insecure"] = state.value6
+            state.nasaReplies["attention"] = state.attention
+            stopTimer()
+            addDemographics()
+            router.push({ name: 'Feedback', params: { userId: userId.value } })
         }
 
         function startTimer() {
@@ -131,7 +162,7 @@ export default {
             }, {headers})
         }
 
-        return {state, enableNext, addDemographics, startTimer, stopTimer, userId}
+        return {state, enableNext, submitAnswers, addDemographics, startTimer, stopTimer, userId}
     }
 
 }

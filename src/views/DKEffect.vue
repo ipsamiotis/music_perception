@@ -36,11 +36,11 @@
         </section>
         <br>
     </body>
-    <Button icon="pi pi-check" label="Submit" @click="enableNext()" class="p-button-success" />
+    <Button label="Proceed" @click="submitAnswers()" :disabled="state.isDisabled"/>
 </template>
 
 <script>
-import { onMounted, reactive, computed } from 'vue';
+import { onMounted, reactive, computed, watch } from 'vue';
 
 import {useRoute} from 'vue-router'
 import router from '@/router/index.js'
@@ -77,19 +77,38 @@ export default {
             })
         })
 
+        watch(
+            () => [state.value2, state.value3, state.value4, state.value5],
+            ([value2, value3, value4, value5], [prevalue2, prevalue3, prevalue4, prevalue5]) => {
+                if (value2 != prevalue2){
+                    enableNext()
+                }
+                if (value3 != prevalue3){
+                    enableNext()
+                }
+                if (value4 != prevalue4){
+                    enableNext()
+                }
+                if (value5 != prevalue5){
+                    enableNext()
+                }
+            }
+        )
+
         function enableNext() {
             if (state.value2 != null && state.value3 != null && state.value4 != null && state.value5 != null){
-                // state.dkReplies = [state.value2, state.value3, state.value4, state.value5]
-                state.dkReplies["melody_self"] = state.value2
-                state.dkReplies["tuning_self"] = state.value3
-                state.dkReplies["accent_self"] = state.value4
-                state.dkReplies["speed_self"] = state.value5
-                stopTimer()
-                addDemographics()
-                router.push({ name: 'Equipment', params: { userId: userId.value } })
-            } else {
-                alert("Please reply to all questions first")
+                state.isDisabled = false
             }
+        }
+
+        function submitAnswers(){
+            state.dkReplies["melody_self"] = state.value2
+            state.dkReplies["tuning_self"] = state.value3
+            state.dkReplies["accent_self"] = state.value4
+            state.dkReplies["speed_self"] = state.value5
+            stopTimer()
+            addDemographics()
+            router.push({ name: 'Equipment', params: { userId: userId.value } })
         }
 
         function startTimer() {
@@ -110,7 +129,7 @@ export default {
             }, {headers})
         }
 
-        return {state, enableNext, addDemographics, startTimer, stopTimer, userId}
+        return {state, enableNext, submitAnswers, addDemographics, startTimer, stopTimer, userId}
     }
 
 }
