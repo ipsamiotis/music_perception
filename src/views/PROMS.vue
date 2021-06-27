@@ -14,17 +14,17 @@
             <!-- First Token:  -->
             <h2>Your Participant ID: <span style="color: #1E88E5;background-color: #efefef;">{{userId}}</span></h2>
             <!-- <strong>After completing</strong> the tasks below, you'll be presented with a <strong>second token</strong>. Use that token in the text field to the <strong>top</strong> to continue. -->
-            When you will finish the music skill test, you will be provided with a <strong>task token</strong>. Please <strong>return to this page</strong> and place that token to the entry below, to continue.
+            <!-- When you will finish the music skill test, you will be provided with a <strong>task token</strong>. Please <strong>return to this page</strong> and place that token to the entry below, to continue. -->
             <br>
             <br>
             <br>
             <Button label="Access Music Skill Test here!" @click="openSkillTest()"/>
             <br>
-            <div id="continue-token">
+            <!-- <div id="continue-token">
                 Enter <strong>task token</strong> here:
                 <InputText id="continueToken" type="text" v-model="state.token"/>
                 <Button label="Continue" @click="stopTimer();addDemographics();$router.push({ name: 'AfterPROMS', params: { userId: userId } })" :disabled="state.isDisabled"/>
-            </div>
+            </div> -->
             <!-- <a href="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en">Access Music Skill Test here!</a> -->
             <!-- <iframe src="https://webapp.uibk.ac.at/psychologie/psyuibk/index.php/394639?lang=en" width="100%"
                 height="920" frameborder="1"></iframe> -->
@@ -38,13 +38,13 @@ import {useRoute} from 'vue-router'
 
 import axios from 'axios'
 
-import InputText from 'primevue/inputtext';
+// import InputText from 'primevue/inputtext';
 import Button from 'primevue/button';
 
 export default {
     components: {
         Button,
-        InputText
+        // InputText
     },
     setup () {
         const route = useRoute();
