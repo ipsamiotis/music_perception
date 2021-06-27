@@ -50,9 +50,9 @@ export default {
 
         function proceed(){
             if ((/\S/.test(state.feedback)) && (state.feedback.length >= 2)) {
-                stopTimer()
                 state.feedbackReplies["feedback"] = state.feedback
                 addDemographics()
+                stopTimer()
                 router.push('/final')
             } else {
                 alert("Your feedback will help us improve our studies in the future.")
