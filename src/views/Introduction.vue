@@ -20,7 +20,7 @@
                 Make sure you follow the instructions on the tasks, to navigate successfully.
                 <br>
                 <br>
-                <strong style="color: red">IMPORTANT:</strong> Please only use <strong>Mozilla Firefox</strong> or <strong>Chrome</strong> for this study.
+                <strong style="color: red">IMPORTANT:</strong> Please only use <strong>Mozilla Firefox</strong> or <strong>Google Chrome</strong> for this study.
                 <br>
                 <br>
                 Regarding Privacy: <b><u>This is an anonymous survey.</u></b> Please do not self-identify yourself as responses may be shared publicly. This survey complies with the GDPR (General Data Protection Regulation).
