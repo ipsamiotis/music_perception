@@ -90,13 +90,13 @@ export default {
         }
 
         async function groundHogDay() {
-            let previousTime = null
+            let previousTime = ''
             try {
                 previousTime = await axios.get(`http://localhost:3000/crowd-results/${userId.value}`)
             }catch (err) {
-                previousTime = err.response.data
+                previousTime = err.request.status
             }finally {
-                if (Object.keys(previousTime).length !== 0) {
+                if (previousTime !== 404) {
                     state.memory_of_this_place = true
                 }
                 if (!state.memory_of_this_place) {
