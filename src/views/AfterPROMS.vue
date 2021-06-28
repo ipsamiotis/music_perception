@@ -69,20 +69,6 @@ export default {
             state.progressReplies["time_spent"] = state.reactionTime
         }
 
-        // async function groundHogDay() {
-        //     axios.get(`http://localhost:3000/crowd-results/${userId.value}`)
-        //             .then(response => {
-        //                     let previousTime = response.data["progressPage"]
-        //                     if (typeof previousTime !== 'undefined') {
-        //                         state.showButton = false
-        //                     }
-        //                     if (state.showButton) {
-        //                         enableNext()
-        //                     }
-        //                 }
-        //                 );
-        // }
-
         async function addDemographics() {
             const headers = {"Content-Type": "application/json"}
             await axios.patch(`http://localhost:3000/crowd-results/${userId.value}`, {

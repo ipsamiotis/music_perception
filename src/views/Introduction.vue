@@ -29,7 +29,8 @@
                 <br>
                 <br>
                 <div v-if="(state.isFirefox) || (state.isChrome)">
-                    <Button label="Begin" @click="stopTimer();addDemographics();$router.push({ name: 'Demographics', params: { userId: userId } })"/>
+                    <Button label="Begin" @click="groundHogDay()" :disabled="state.memory_of_this_place"/>
+                    <div v-if="(state.memory_of_this_place)">Sorry, it appears you had previously accessed this study</div>
                 </div>
                 <div v-else>
                     Please use Mozilla Firefox or Chrome in this study
@@ -43,6 +44,8 @@
 import { reactive, computed, onMounted } from 'vue'
 
 import {useRoute} from 'vue-router'
+
+import router from '@/router/index.js'
 
 import Button from 'primevue/button'
 
@@ -58,6 +61,7 @@ export default {
 
         const state = reactive({
             introduction: {},
+            memory_of_this_place: false,
             timer: null,
             isFirefox: '',
             isChrome: '',
@@ -83,6 +87,28 @@ export default {
             state.isFirefox = typeof InstallTrigger !== 'undefined';
             // Chrome 1 - 79
             state.isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+        }
+
+        async function groundHogDay() {
+            let previousTime = null
+            try {
+                previousTime = await axios.get(`http://localhost:3000/crowd-results/${userId.value}`)
+            }catch (err) {
+                previousTime = err.response.data
+            }finally {
+                if (Object.keys(previousTime).length !== 0) {
+                    state.memory_of_this_place = true
+                }
+                if (!state.memory_of_this_place) {
+                    enableNext()
+                }
+            }
+        }
+
+        function enableNext() {
+            stopTimer()
+            addDemographics()
+            router.push({ name: 'Demographics', params: { userId: userId.value } })
         }
 
         function stopTimer() {
@@ -113,7 +139,9 @@ export default {
             startTimer,
             stopTimer,
             addDemographics,
-            userId
+            userId,
+            groundHogDay,
+            enableNext
         }
     }
 }
