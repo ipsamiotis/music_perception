@@ -11,7 +11,12 @@
         </section>
         <br>
     </body>
-    <Button label="Proceed" @click="enableNext()" class="p-button-success" />
+    <!-- <div v-if="state.showButton"> -->
+        <Button label="Proceed" @click="enableNext()" class="p-button-success" />
+    <!-- </div> -->
+    <!-- <div v-else> -->
+        <!-- I'm sorry, it seems you have progressed further on another tab. -->
+    <!-- </div> -->
 </template>
 
 <script>
@@ -34,6 +39,8 @@ export default {
         const userId = computed(() => route.params.userId)
 
         const state = reactive({
+            // showButton: true,
+            // previousTime: null,
             progressReplies: {},
             timer: null,
             reactionTime: 0 // in ms
@@ -62,6 +69,20 @@ export default {
             state.progressReplies["time_spent"] = state.reactionTime
         }
 
+        // async function groundHogDay() {
+        //     axios.get(`http://localhost:3000/crowd-results/${userId.value}`)
+        //             .then(response => {
+        //                     let previousTime = response.data["progressPage"]
+        //                     if (typeof previousTime !== 'undefined') {
+        //                         state.showButton = false
+        //                     }
+        //                     if (state.showButton) {
+        //                         enableNext()
+        //                     }
+        //                 }
+        //                 );
+        // }
+
         async function addDemographics() {
             const headers = {"Content-Type": "application/json"}
             await axios.patch(`http://localhost:3000/crowd-results/${userId.value}`, {
@@ -69,7 +90,10 @@ export default {
             }, {headers})
         }
 
-        return {state, enableNext, addDemographics, startTimer, stopTimer, userId}
+        return {
+            state, enableNext, addDemographics, startTimer, stopTimer, userId
+            // groundHogDay
+            }
     }
 
 }
